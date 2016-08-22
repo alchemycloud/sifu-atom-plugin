@@ -15,19 +15,267 @@
 ]
 
 'repository':
+  'comments':
+    'match': '#.*\\b'
+    'name': 'comment'
+
   'project':
-    'captures':
+    'begin': '(?i:\\s*([_a-zA-Z][_a-zA-Z0-9]*)\\s+(project)\\b)'
+    'beginCaptures':
       '1':
-        'name': 'variable'
+        'name': 'definition'
       '2':
         'name': 'keyword'
-    'match': '(?i:\\s*(.+)\\s+(project)\\b)'
-    'name': 'project'
 
-  'comments':
-    'patterns': [
+    'name': 'project'
+    'patterns':[
       {
-        'match': '#.*'
-        'name': 'comment'
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#url'
+          }
+          {
+            'include': '#namespace'
+          }
+        ]
+        'end': '\\]'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#server'
+          }
+          {
+            'include': '#client'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
       }
     ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
+
+  'url':
+    'begin': '(?i:\\s*(url)\\s+([_a-zA-Z][_a-zA-Z0-9]*)\\b)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'variable'
+    'name': 'url'
+    'patterns': [
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\]'
+      }
+
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
+      }
+    ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
+
+  'namespace':
+    'begin': '(?i:\\s*(namespace)\\s+(([_a-zA-Z][_a-zA-Z0-9]+)(\\.[_a-zA-Z][_a-zA-Z0-9]*)*)\\b)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'variable'
+    'name': 'namespace'
+    'patterns': [
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\]'
+      }
+
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
+      }
+    ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
+
+  'server':
+    'begin': '(?i:\\s*([_a-zA-Z][_a-zA-Z0-9]*)\\s+(server)\\b)'
+    'beginCaptures':
+      '1':
+        'name': 'definition'
+      '2':
+        'name': 'keyword'
+    'name': 'server'
+    'patterns': [
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#server-template'
+          }
+        ]
+        'end': '\\]'
+      }
+
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
+      }
+    ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
+
+  'server-template':
+    'begin': '(?i:\\s*(template)\\s+(java-springboot)\\b)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'constant'
+    'name': 'server-template'
+    'patterns': [
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\]'
+      }
+
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
+      }
+    ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
+
+  'client':
+    'begin': '(?i:\\s*([_a-zA-Z][_a-zA-Z0-9]*)\\s+(client)\\b)'
+    'beginCaptures':
+      '1':
+        'name': 'definition'
+      '2':
+        'name': 'keyword'
+    'name': 'client'
+    'patterns': [
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\]'
+      }
+
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\)'
+      }
+
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+        ]
+        'end': '\\}'
+      }
+    ]
+    'end': '(?=(\\,|\\n|#.*|\\]|\\)|\\}))'
