@@ -1,0 +1,14 @@
+{
+  "name": "language-sifu",
+  "version": "0.1.1",
+  "description": "Sifu DSL language plugin",
+  "keywords": [
+    "language",
+    "grammar"
+  ],
+  "repository": "https://github.com/drytools/sifu-atom-plugin",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}

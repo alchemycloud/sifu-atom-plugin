@@ -1,0 +1,33 @@
+'scopeName': 'source.sifu'
+'name': 'PackageName'
+'fileTypes': [
+  'sifu',
+  'sifu.debug'
+]
+
+'patterns': [
+  {
+    'include': '#comments'
+  }
+  {
+    'include': '#project'
+  }
+]
+
+'repository':
+  'project':
+    'captures':
+      '1':
+        'name': 'variable'
+      '2':
+        'name': 'keyword'
+    'match': '(?i:\\s*(.+)\\s+(project)\\b)'
+    'name': 'project'
+
+  'comments':
+    'patterns': [
+      {
+        'match': '#.*'
+        'name': 'comment'
+      }
+    ]
