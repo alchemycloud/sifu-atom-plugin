@@ -21,7 +21,7 @@
     'name': 'comment'
 
   'api':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(api))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+api))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -121,23 +121,31 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'binaryCondition':
-    'begin': '(?i:\\s*((optional)?)\\s*((mandatory)?)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)\\s*((==|!=|>=|>|<=|<|like|in))\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(?:(\\s*optional))?(?:(\\s+mandatory))?(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:(\\s+==)|(\\s+!=)|(\\s+>=)|(\\s+>)|(\\s+<=)|(\\s+<)|(\\s+like)|(\\s+in))(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
-        'name': 'option'
+        'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'option'
-      '4':
-        'name': 'keyword'
-      '5':
         'name': 'constant'
+      '4':
+        'name': 'markup.inserted'
+      '5':
+        'name': 'markup.inserted'
       '6':
-        'name': 'or'
+        'name': 'markup.inserted'
       '7':
         'name': 'markup.inserted'
       '8':
+        'name': 'markup.inserted'
+      '9':
+        'name': 'markup.inserted'
+      '10':
+        'name': 'markup.inserted'
+      '11':
+        'name': 'markup.inserted'
+      '12':
         'name': 'constant'
 
     'name': 'binaryCondition'
@@ -193,7 +201,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'bind':
-    'begin': '(?i:\\s*(bind))'
+    'begin': '(?i:(\\s*bind))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -262,19 +270,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'bindParamsProperty':
-    'begin': '(?i:\\s*(bind)\\s*(params)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*bind)(\\s+params)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'repeat'
-      '4':
-        'name': 'composit'
-      '5':
         'name': 'support.type'
-      '6':
+      '4':
         'name': 'support.type'
 
     'name': 'bindParamsProperty'
@@ -330,19 +334,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'bindUiModelProperty':
-    'begin': '(?i:\\s*(bind)\\s*(model)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*bind)(\\s+model)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'repeat'
-      '4':
-        'name': 'composit'
-      '5':
         'name': 'support.type'
-      '6':
+      '4':
         'name': 'support.type'
 
     'name': 'bindUiModelProperty'
@@ -398,19 +398,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'bindItemProperty':
-    'begin': '(?i:\\s*(bind)\\s*(item)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*bind)(\\s+item)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'repeat'
-      '4':
-        'name': 'composit'
-      '5':
         'name': 'support.type'
-      '6':
+      '4':
         'name': 'support.type'
 
     'name': 'bindItemProperty'
@@ -466,19 +462,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'bindPrincipalProperty':
-    'begin': '(?i:\\s*(bind)\\s*(principal)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*bind)(\\s+principal)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'repeat'
-      '4':
-        'name': 'composit'
-      '5':
         'name': 'support.type'
-      '6':
+      '4':
         'name': 'support.type'
 
     'name': 'bindPrincipalProperty'
@@ -534,7 +526,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'callEndpoint':
-    'begin': '(?i:\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -645,17 +637,19 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'cardinality':
-    'begin': '(?i:\\s*((oneToOne|oneToMany|manyToOne|manyToMany))\\s*(([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)?))'
+    'begin': '(?i:(?:(\\s*oneToOne)|(\\s*oneToMany)|(\\s*manyToOne)|(\\s*manyToMany))(?:\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
         'name': 'markup.inserted'
       '3':
-        'name': 'option'
+        'name': 'markup.inserted'
       '4':
-        'name': 'support.type'
+        'name': 'markup.inserted'
       '5':
+        'name': 'support.type'
+      '6':
         'name': 'support.type'
 
     'name': 'cardinality'
@@ -711,7 +705,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'client':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(client))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+client))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -826,13 +820,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'clientTemplate':
-    'begin': '(?i:\\s*(template)\\s*((js-angular|android|ios)))'
+    'begin': '(?i:(\\s*template)(?:(\\s+js-angular)|(\\s+android)|(\\s+ios)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'markup.inserted'
 
     'name': 'clientTemplate'
@@ -890,7 +886,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'close':
-    'begin': '(?i:\\s*(close))'
+    'begin': '(?i:(\\s*close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -968,7 +964,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'compositeCondition':
-    'begin': '(?i:\\s*(()\\s*(object)\\s*()))'
+    'begin': '(?i:(\\s*()(\\s+object)(\\s+)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -1030,19 +1026,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'conditionExpression':
-    'begin': '(?i:\\s*((object|object|object))\\s*(((#.*s*(and|or)s*#.*s*(object|object|object)))?))'
+    'begin': '(?i:(?:(\\s*object)|(\\s*object)|(\\s*object))(?:\\s+(\\s*#.*)\\s+(?:(\\s*and)|(\\s*or))\\s+(\\s*#.*)\\s+(?:(\\s*object)|(\\s*object)|(\\s*object)))*)'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'object'
       '2':
         'name': 'object'
       '3':
-        'name': 'repeat'
+        'name': 'object'
       '4':
-        'name': 'composit'
+        'name': 'markup.inserted'
       '5':
-        'name': 'or'
-      '6':
         'name': 'markup.inserted'
 
     'name': 'conditionExpression'
@@ -1158,7 +1152,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'connectedTo':
-    'begin': '(?i:\\s*(connectedTo))'
+    'begin': '(?i:(\\s*connectedTo))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -1218,7 +1212,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'connectedToConnectedToEndpoint':
-    'begin': '(?i:\\s*(connectedTo)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*connectedTo)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -1280,7 +1274,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'container':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(container))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+container))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -1478,7 +1472,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'countEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(count))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+count))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -1561,7 +1555,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'createEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(create))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+create))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -1706,7 +1700,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(crud))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+crud))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -1821,17 +1815,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyBoolean':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(boolean))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+boolean))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyBoolean'
@@ -1895,17 +1887,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyBytes':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(bytes))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+bytes))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyBytes'
@@ -1972,23 +1962,19 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyCopy':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*((mandatory)?)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(?:(\\s+mandatory))?\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
-        'name': 'option'
-      '6':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
-      '7':
+      '5':
         'name': 'punctuation.definition.identity'
-      '8':
+      '6':
         'name': 'punctuation.definition.identity'
 
     'name': 'crudPropertyCopy'
@@ -2067,17 +2053,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyDate':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(date))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+date))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyDate'
@@ -2147,17 +2131,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyDateTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(datetime))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+datetime))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyDateTime'
@@ -2227,17 +2209,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyDecimal':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(decimal))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+decimal))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyDecimal'
@@ -2313,17 +2293,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyInlineDto':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(dto))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+dto))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyInlineDto'
@@ -2419,17 +2397,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyInlineEnum':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(enum))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+enum))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyInlineEnum'
@@ -2495,17 +2471,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyInt':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(integer))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+integer))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyInt'
@@ -2575,17 +2549,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyText':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(text))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+text))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyText'
@@ -2658,17 +2630,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(time))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+time))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyTime'
@@ -2738,17 +2708,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyUUID':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(bytes))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+bytes))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'crudPropertyUUID'
@@ -2809,18 +2777,18 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudPropertyUnidentified':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*|[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(?:\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)|\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
+      '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'support.type'
       '5':
-        'name': 'or'
+        'name': 'support.type'
       '6':
         'name': 'support.type'
       '7':
@@ -2896,11 +2864,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudTypeElement':
-    'begin': '(?i:\\s*((create|read|update|delete)))'
+    'begin': '(?i:(?:(\\s*create)|(\\s*read)|(\\s*update)|(\\s*delete)))'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
+        'name': 'markup.inserted'
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'markup.inserted'
 
     'name': 'crudTypeElement'
@@ -2956,7 +2928,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'crudVisible':
-    'begin': '(?i:\\s*(visible))'
+    'begin': '(?i:(\\s*visible))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3016,7 +2988,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'currencies':
-    'begin': '(?i:\\s*(currencies))'
+    'begin': '(?i:(\\s*currencies))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3076,13 +3048,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'currenciesCurrencyTypeElement':
-    'begin': '(?i:\\s*(currencies)\\s*((EUR|RSD|USD|HRK)))'
+    'begin': '(?i:(\\s*currencies)(?:(\\s+EUR)|(\\s+RSD)|(\\s+USD)|(\\s+HRK)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'markup.inserted'
 
     'name': 'currenciesCurrencyTypeElement'
@@ -3138,11 +3114,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'currencyTypeElement':
-    'begin': '(?i:\\s*((EUR|RSD|USD|HRK)))'
+    'begin': '(?i:(?:(\\s*EUR)|(\\s*RSD)|(\\s*USD)|(\\s*HRK)))'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
+        'name': 'markup.inserted'
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'markup.inserted'
 
     'name': 'currencyTypeElement'
@@ -3198,7 +3178,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'customEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(custom))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+custom))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -3296,7 +3276,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultAny':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3356,7 +3336,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultBoolean':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3416,7 +3396,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultDate':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3476,7 +3456,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultDateTime':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3536,7 +3516,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultDecimal':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3596,7 +3576,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultEnum':
-    'begin': '(?i:\\s*(default)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*default)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3658,12 +3638,12 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultModelType':
-    'begin': '(?i:\\s*(default model type)\\s*((sql|nosql)))'
+    'begin': '(?i:(\\s*default model type)(?:(\\s+sql)|(\\s+nosql)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
         'name': 'markup.inserted'
 
@@ -3720,7 +3700,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultNumber':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3780,7 +3760,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultText':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3840,7 +3820,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultTime':
-    'begin': '(?i:\\s*(default)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*default)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3900,7 +3880,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'deleteEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(delete))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+delete))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -4004,7 +3984,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'developers':
-    'begin': '(?i:\\s*(developer))'
+    'begin': '(?i:(\\s*developer))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -4064,7 +4044,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'developersIdentifierElement':
-    'begin': '(?i:\\s*(developer)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*developer)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -4124,7 +4104,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dropConstant':
-    'begin': '(?i:\\s*(drop)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*drop)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -4184,7 +4164,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dropDown':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(dropdown))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+dropdown))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -4472,13 +4452,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dropVariable':
-    'begin': '(?i:\\s*(drop)\\s*(([a-zA-Z][_a-zA-Z0-9]*)?))'
+    'begin': '(?i:(\\s*drop)(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'punctuation.definition.identity'
 
     'name': 'dropVariable'
@@ -4534,7 +4512,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dto':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(dto))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+dto))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -4631,17 +4609,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyBoolean':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(boolean))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+boolean))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyBoolean'
@@ -4702,17 +4678,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyBytes':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(bytes))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+bytes))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyBytes'
@@ -4776,17 +4750,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyDate':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(date))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+date))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyDate'
@@ -4853,17 +4825,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyDateTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(datetime))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+datetime))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyDateTime'
@@ -4930,17 +4900,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyDecimal':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(decimal))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+decimal))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyDecimal'
@@ -5013,17 +4981,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyDtoInline':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(dto))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+dto))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyDtoInline'
@@ -5119,17 +5085,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyInlineEnum':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(enum))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+enum))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyInlineEnum'
@@ -5192,17 +5156,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyInt':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(integer))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+integer))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyInt'
@@ -5269,17 +5231,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyText':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(text))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+text))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyText'
@@ -5349,17 +5309,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(time))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+time))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyTime'
@@ -5426,17 +5384,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyUUID':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(uuid))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+uuid))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'dtoPropertyUUID'
@@ -5494,29 +5450,21 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoPropertyUnidentified':
-    'begin': '(?i:\\s*(([a-zA-Z][_a-zA-Z0-9]*)?)\\s*(((optional|list))?)\\s*((mandatory)?)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*((dto)?))'
+    'begin': '(?i:(?:(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:(?:(\\s+optional)|(\\s+list)))*(?:(\\s+mandatory))?\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:(\\s+dto))?)'
     'beginCaptures':
       '1':
-        'name': 'option'
+        'name': 'punctuation.definition.identity'
       '2':
-        'name': 'punctuation.definition.identity'
-      '3':
-        'name': 'repeat'
-      '4':
-        'name': 'or'
-      '5':
         'name': 'markup.inserted'
-      '6':
-        'name': 'option'
-      '7':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
-      '8':
+      '5':
         'name': 'punctuation.definition.identity'
-      '9':
+      '6':
         'name': 'punctuation.definition.identity'
-      '10':
-        'name': 'option'
-      '11':
+      '7':
         'name': 'keyword'
 
     'name': 'dtoPropertyUnidentified'
@@ -5624,7 +5572,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'dtoSetting':
-    'begin': '(?i:\\s*(dto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*dto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -5686,7 +5634,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'embeddedModel':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(embedded))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+embedded))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -5778,7 +5726,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointErrors':
-    'begin': '(?i:\\s*(errors))'
+    'begin': '(?i:(\\s*errors))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -5838,7 +5786,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointErrorsIdentifierElement':
-    'begin': '(?i:\\s*(errors)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*errors)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -5898,7 +5846,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryCount':
-    'begin': '(?i:\\s*(query)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*query)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -5960,7 +5908,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryDelete':
-    'begin': '(?i:\\s*(query)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*query)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6022,7 +5970,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryFind':
-    'begin': '(?i:\\s*(query)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*query)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6084,7 +6032,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryInlineCount':
-    'begin': '(?i:\\s*(object))'
+    'begin': '(?i:(\\s*object))'
     'beginCaptures':
       '1':
         'name': 'object'
@@ -6142,7 +6090,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryInlineDelete':
-    'begin': '(?i:\\s*(object))'
+    'begin': '(?i:(\\s*object))'
     'beginCaptures':
       '1':
         'name': 'object'
@@ -6200,7 +6148,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryInlineFind':
-    'begin': '(?i:\\s*(object))'
+    'begin': '(?i:(\\s*object))'
     'beginCaptures':
       '1':
         'name': 'object'
@@ -6258,7 +6206,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryInlineGet':
-    'begin': '(?i:\\s*(object))'
+    'begin': '(?i:(\\s*object))'
     'beginCaptures':
       '1':
         'name': 'object'
@@ -6316,7 +6264,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQueryInlineSelect':
-    'begin': '(?i:\\s*(object))'
+    'begin': '(?i:(\\s*object))'
     'beginCaptures':
       '1':
         'name': 'object'
@@ -6374,7 +6322,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'endpointQuerySelect':
-    'begin': '(?i:\\s*(query)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*query)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6436,7 +6384,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'enum':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(enum))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+enum))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -6498,7 +6446,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'enumSetting':
-    'begin': '(?i:\\s*(enum)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*enum)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6560,13 +6508,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'enumValue':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(([a-zA-Z][_a-zA-Z0-9]*)?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'punctuation.definition.identity'
 
     'name': 'enumValue'
@@ -6622,13 +6568,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'error':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((unauthorized|dataConstraint|badRequest|internalError)))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+unauthorized)|(\\s+dataConstraint)|(\\s+badRequest)|(\\s+internalError)))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'markup.inserted'
 
     'name': 'error'
@@ -6684,7 +6634,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'event':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(event))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+event))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -6775,17 +6725,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'eventProperty':
-    'begin': '(?i:\\s*(event)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*event)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'eventProperty'
@@ -6841,13 +6787,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'fileStorage':
-    'begin': '(?i:\\s*(file storage)\\s*((db|fs|aws)))'
+    'begin': '(?i:(\\s*file storage)(?:(\\s+db)|(\\s+fs)|(\\s+aws)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'markup.inserted'
 
     'name': 'fileStorage'
@@ -6903,7 +6851,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'findEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(find))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+find))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -6995,7 +6943,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'fireEvent':
-    'begin': '(?i:\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7077,7 +7025,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'form':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(form))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+form))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -7350,7 +7298,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'goToPage':
-    'begin': '(?i:\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7432,7 +7380,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'hidden':
-    'begin': '(?i:\\s*(hidden))'
+    'begin': '(?i:(\\s*hidden))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7490,7 +7438,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'hide':
-    'begin': '(?i:\\s*(hide))'
+    'begin': '(?i:(\\s*hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7548,7 +7496,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'home':
-    'begin': '(?i:\\s*(home)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*home)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7610,7 +7558,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'i18n':
-    'begin': '(?i:\\s*(i18n))'
+    'begin': '(?i:(\\s*i18n))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7670,7 +7618,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'i18nLanguageElement':
-    'begin': '(?i:\\s*(i18n)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*i18n)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7730,7 +7678,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'identifierElement':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -7788,7 +7736,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'indexed':
-    'begin': '(?i:\\s*(indexed))'
+    'begin': '(?i:(\\s*indexed))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7846,7 +7794,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineContainer':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(container))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+container))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -8062,7 +8010,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineDropDown':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(dropdown))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+dropdown))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -8350,7 +8298,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineForm':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(form))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+form))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -8638,7 +8586,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineList':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(list))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+list))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -8923,7 +8871,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineMultiSelect':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(multiselect))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+multiselect))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -9211,7 +9159,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineTable':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(table))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+table))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -9496,7 +9444,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'inlineView':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(view))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+view))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -9751,17 +9699,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'itemProperty':
-    'begin': '(?i:\\s*(item)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*item)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'itemProperty'
@@ -9817,10 +9761,10 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'join':
-    'begin': '(?i:\\s*((join|left join))\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(on)\\s*((([a-zA-Z][_a-zA-Z0-9]*s*with))?)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(?:(\\s*join)|(\\s*left join))\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(\\s+on)(?:\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*)\\s+(\\s*with))?\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
         'name': 'markup.inserted'
       '3':
@@ -9828,22 +9772,14 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'option'
+        'name': 'punctuation.definition.identity'
       '6':
-        'name': 'composit'
+        'name': 'keyword'
       '7':
         'name': 'punctuation.definition.identity'
       '8':
-        'name': 'keyword'
-      '9':
-        'name': 'option'
-      '10':
-        'name': 'composit'
-      '11':
-        'name': 'punctuation.definition.identity'
-      '12':
         'name': 'support.type'
-      '13':
+      '9':
         'name': 'support.type'
 
     'name': 'join'
@@ -9899,7 +9835,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'key':
-    'begin': '(?i:\\s*(key)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*key)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -9959,7 +9895,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'languageElement':
-    'begin': '(?i:\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'constant'
@@ -10017,7 +9953,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'list':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(list))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+list))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -10284,7 +10220,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'loadEndpointSetting':
-    'begin': '(?i:\\s*(load)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*load)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10346,7 +10282,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'loggedIn':
-    'begin': '(?i:\\s*(loggedin)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*loggedin)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10408,7 +10344,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'logged':
-    'begin': '(?i:\\s*(logged))'
+    'begin': '(?i:(\\s*logged))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10466,7 +10402,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'mail':
-    'begin': '(?i:\\s*(mail)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*mail)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10526,7 +10462,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxAny':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10586,7 +10522,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxDate':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10646,7 +10582,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxDateTime':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10706,7 +10642,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxDecimal':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10766,7 +10702,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxNumber':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10826,7 +10762,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'maxTime':
-    'begin': '(?i:\\s*(max)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*max)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10886,7 +10822,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minAny':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10946,7 +10882,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minDate':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11006,7 +10942,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minDateTime':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11066,7 +11002,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minDecimal':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11126,7 +11062,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minNumber':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11186,7 +11122,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'minTime':
-    'begin': '(?i:\\s*(min)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*min)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11246,7 +11182,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelDtoSetting':
-    'begin': '(?i:\\s*(model))'
+    'begin': '(?i:(\\s*model))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -11335,7 +11271,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'model':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(model))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+model))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -11459,15 +11395,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyBoolean':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(boolean))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+boolean))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyBoolean'
@@ -11543,15 +11477,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyBytes':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(bytes))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+bytes))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyBytes'
@@ -11630,15 +11562,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyDate':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(date))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+date))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyDate'
@@ -11720,15 +11650,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyDateTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(datetime))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+datetime))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyDateTime'
@@ -11810,15 +11738,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyDecimal':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(decimal))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+decimal))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyDecimal'
@@ -11906,15 +11832,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyEnumInline':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(enum))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+enum))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyEnumInline'
@@ -11995,15 +11919,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyInt':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(integer))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+integer))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyInt'
@@ -12085,15 +12007,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyText':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(text))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+text))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyText'
@@ -12181,15 +12101,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(time))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+time))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyTime'
@@ -12271,15 +12189,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyUUID':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*(uuid))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(\\s+uuid))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
-      '3':
         'name': 'keyword'
-      '4':
+      '3':
         'name': 'keyword'
 
     'name': 'modelPropertyUUID'
@@ -12352,21 +12268,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyUnidentified':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*((optional)?)\\s*((list)?)\\s*(([a-zA-Z][_a-zA-Z0-9]*)))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(?:(\\s+list))?(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*)))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'option'
+        'name': 'keyword'
       '3':
         'name': 'keyword'
       '4':
-        'name': 'option'
-      '5':
-        'name': 'keyword'
-      '6':
-        'name': 'or'
-      '7':
         'name': 'punctuation.definition.identity'
 
     'name': 'modelPropertyUnidentified'
@@ -12454,7 +12364,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelSetting':
-    'begin': '(?i:\\s*(model)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*model)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -12516,12 +12426,12 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelType':
-    'begin': '(?i:\\s*(type)\\s*((sql|nosql)))'
+    'begin': '(?i:(\\s*type)(?:(\\s+sql)|(\\s+nosql)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
         'name': 'markup.inserted'
 
@@ -12578,7 +12488,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'multiSelect':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(multiselect))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+multiselect))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -12848,7 +12758,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'multipleIndex':
-    'begin': '(?i:\\s*(index))'
+    'begin': '(?i:(\\s*index))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -12908,7 +12818,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'multipleUnique':
-    'begin': '(?i:\\s*(unique))'
+    'begin': '(?i:(\\s*unique))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -12968,7 +12878,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'namespace':
-    'begin': '(?i:\\s*(namespace)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*namespace)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13030,7 +12940,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'navigation':
-    'begin': '(?i:\\s*(navigation)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*navigation)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13152,7 +13062,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClick':
-    'begin': '(?i:\\s*(on)\\s*(click))'
+    'begin': '(?i:(\\s*on)(\\s+click))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13238,7 +13148,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickGoToPage':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13324,7 +13234,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickFireEvent':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13410,7 +13320,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickClose':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13492,7 +13402,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickReload':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(reload))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13574,7 +13484,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickReplace':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13662,7 +13572,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickOpen':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13748,7 +13658,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickShow':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(show))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13810,7 +13720,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickHide':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(hide))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13872,7 +13782,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClickCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*(click)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+click)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -13987,7 +13897,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClose':
-    'begin': '(?i:\\s*(on)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14073,7 +13983,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseGoToPage':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14159,7 +14069,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseFireEvent':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14245,7 +14155,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseClose':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14327,7 +14237,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseReload':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(reload))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14409,7 +14319,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseReplace':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14497,7 +14407,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseOpen':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14583,7 +14493,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseShow':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(show))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14645,7 +14555,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseHide':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(hide))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14707,7 +14617,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onCloseCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*(close)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+close)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14822,7 +14732,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEvent':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14910,7 +14820,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventGoToPage':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -14998,7 +14908,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventFireEvent':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15086,7 +14996,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventClose':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(close))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15170,7 +15080,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventReload':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(reload))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15254,7 +15164,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventReplace':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15344,7 +15254,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventOpen':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15432,7 +15342,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventShow':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(show))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15496,7 +15406,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventHide':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(hide))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15560,7 +15470,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEventCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15677,7 +15587,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoad':
-    'begin': '(?i:\\s*(on)\\s*(load))'
+    'begin': '(?i:(\\s*on)(\\s+load))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15763,7 +15673,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadGoToPage':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15849,7 +15759,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadFireEvent':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -15935,7 +15845,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadClose':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16017,7 +15927,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadReload':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(reload))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16099,7 +16009,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadReplace':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16187,7 +16097,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadOpen':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16273,7 +16183,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadShow':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(show))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16335,7 +16245,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadHide':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(hide))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16397,7 +16307,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoadCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*(load)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+load)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16512,7 +16422,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelect':
-    'begin': '(?i:\\s*(on)\\s*(select))'
+    'begin': '(?i:(\\s*on)(\\s+select))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16598,7 +16508,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectGoToPage':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16684,7 +16594,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectFireEvent':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16770,7 +16680,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectClose':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16852,7 +16762,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectReload':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(reload))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -16934,7 +16844,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectReplace':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17022,7 +16932,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectOpen':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17108,7 +17018,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectShow':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(show))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17170,7 +17080,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectHide':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(hide))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17232,7 +17142,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelectCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*(select)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+select)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17347,7 +17257,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccess':
-    'begin': '(?i:\\s*(on)\\s*(success))'
+    'begin': '(?i:(\\s*on)(\\s+success))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17433,7 +17343,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessGoToPage':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(goto)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+goto)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17519,7 +17429,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessFireEvent':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(fire)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+fire)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17605,7 +17515,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessClose':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(close))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+close))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17687,7 +17597,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessReload':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(reload))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17769,7 +17679,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessReplace':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17857,7 +17767,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessOpen':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -17943,7 +17853,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessShow':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(show))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18005,7 +17915,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessHide':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(hide))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+hide))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18067,7 +17977,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccessCallEndpoint':
-    'begin': '(?i:\\s*(on)\\s*(success)\\s*(call)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*on)(\\s+success)(\\s+call)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18182,7 +18092,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'open':
-    'begin': '(?i:\\s*(open)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*open)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18264,7 +18174,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'orderBy':
-    'begin': '(?i:\\s*(order by))'
+    'begin': '(?i:(\\s*order by))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18324,7 +18234,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'orderByOrderByProperty':
-    'begin': '(?i:\\s*(order by)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*((asc|desc)))'
+    'begin': '(?i:(\\s*order by)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:(\\s+asc)|(\\s+desc)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18333,7 +18243,7 @@
       '3':
         'name': 'support.type'
       '4':
-        'name': 'or'
+        'name': 'markup.inserted'
       '5':
         'name': 'markup.inserted'
 
@@ -18390,14 +18300,14 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'orderByProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*((asc|desc)))'
+    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:(\\s+asc)|(\\s+desc)))'
     'beginCaptures':
       '1':
         'name': 'support.type'
       '2':
         'name': 'support.type'
       '3':
-        'name': 'or'
+        'name': 'markup.inserted'
       '4':
         'name': 'markup.inserted'
 
@@ -18454,7 +18364,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'orderableBy':
-    'begin': '(?i:\\s*(orderable by))'
+    'begin': '(?i:(\\s*orderable by))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18514,7 +18424,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'orderableByOrderableByProperty':
-    'begin': '(?i:\\s*(orderable by)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*orderable by)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -18636,7 +18546,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'page':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(page))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+page))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -18846,7 +18756,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'pagedEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(paged))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+paged))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -18944,7 +18854,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'paged':
-    'begin': '(?i:\\s*(paged))'
+    'begin': '(?i:(\\s*paged))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19002,7 +18912,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'params':
-    'begin': '(?i:\\s*(params))'
+    'begin': '(?i:(\\s*params))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19091,17 +19001,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'paramsProperty':
-    'begin': '(?i:\\s*(params)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*params)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'paramsProperty'
@@ -19217,7 +19123,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'path':
-    'begin': '(?i:\\s*(path)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*path)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19277,10 +19183,10 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'paymentProviderElement':
-    'begin': '(?i:\\s*((stripe|paypal)))'
+    'begin': '(?i:(?:(\\s*stripe)|(\\s*paypal)))'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
         'name': 'markup.inserted'
 
@@ -19337,7 +19243,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'paymentProviders':
-    'begin': '(?i:\\s*(payment provider))'
+    'begin': '(?i:(\\s*payment provider))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19397,7 +19303,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'placeHolder':
-    'begin': '(?i:\\s*(placeholder))'
+    'begin': '(?i:(\\s*placeholder))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19455,7 +19361,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'precision':
-    'begin': '(?i:\\s*(precision)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*precision)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19515,7 +19421,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'primaryKey':
-    'begin': '(?i:\\s*(primarykey))'
+    'begin': '(?i:(\\s*primarykey))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19573,17 +19479,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'principalProperty':
-    'begin': '(?i:\\s*(principal)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*principal)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'principalProperty'
@@ -19639,7 +19541,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'productionBoolean':
-    'begin': '(?i:\\s*(production)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*production)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19699,7 +19601,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'productionDecimal':
-    'begin': '(?i:\\s*(production)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*production)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19759,7 +19661,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'productionEnum':
-    'begin': '(?i:\\s*(production)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*production)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19821,7 +19723,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'productionNumber':
-    'begin': '(?i:\\s*(production)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*production)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19881,7 +19783,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'productionText':
-    'begin': '(?i:\\s*(production)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*production)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -19941,7 +19843,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'project':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(project))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+project))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -20011,13 +19913,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishAny':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishAny'
@@ -20073,13 +19973,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishBoolean':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishBoolean'
@@ -20135,13 +20033,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishDate':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishDate'
@@ -20197,13 +20093,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishDateTime':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishDateTime'
@@ -20259,13 +20153,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishDecimal':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishDecimal'
@@ -20321,15 +20213,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishEnum':
-    'begin': '(?i:\\s*(publish)\\s*(([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)?))'
+    'begin': '(?i:(\\s*publish)(?:\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'support.type'
-      '4':
+      '3':
         'name': 'support.type'
 
     'name': 'propertyPublishEnum'
@@ -20385,13 +20275,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishNumber':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishNumber'
@@ -20447,13 +20335,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishText':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishText'
@@ -20509,13 +20395,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyPublishTime':
-    'begin': '(?i:\\s*(publish)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*publish)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'propertyPublishTime'
@@ -20571,7 +20455,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyTracked':
-    'begin': '(?i:\\s*(tracked))'
+    'begin': '(?i:(\\s*tracked))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -20629,7 +20513,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'public':
-    'begin': '(?i:\\s*(public))'
+    'begin': '(?i:(\\s*public))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -20687,7 +20571,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'publish':
-    'begin': '(?i:\\s*(publish))'
+    'begin': '(?i:(\\s*publish))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -20747,7 +20631,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryCount':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(count)\\s*(#.*)\\s*(((froms*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+count)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -20756,30 +20640,14 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'option'
+        'name': 'support.type'
       '5':
-        'name': 'composit'
+        'name': 'support.type'
       '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-      '8':
-        'name': 'option'
-      '9':
-        'name': 'composit'
-      '10':
         'name': 'punctuation.definition.identity'
-      '11':
-        'name': 'repeat'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
-      '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
+      '8':
         'name': 'object'
 
     'name': 'queryCount'
@@ -20835,7 +20703,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryDelete':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(delete)\\s*(#.*)\\s*(((froms*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+delete)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -20844,30 +20712,14 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'option'
+        'name': 'support.type'
       '5':
-        'name': 'composit'
+        'name': 'support.type'
       '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-      '8':
-        'name': 'option'
-      '9':
-        'name': 'composit'
-      '10':
         'name': 'punctuation.definition.identity'
-      '11':
-        'name': 'repeat'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
-      '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
+      '8':
         'name': 'object'
 
     'name': 'queryDelete'
@@ -20923,7 +20775,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryFind':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(find)\\s*(#.*)\\s*(((froms*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+find)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -20932,66 +20784,26 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'option'
+        'name': 'support.type'
       '5':
-        'name': 'composit'
+        'name': 'support.type'
       '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-      '8':
-        'name': 'option'
-      '9':
-        'name': 'composit'
-      '10':
         'name': 'punctuation.definition.identity'
+      '7':
+        'name': 'object'
+      '8':
+        'name': 'object'
+      '9':
+        'name': 'object'
+      '10':
+        'name': 'object'
       '11':
-        'name': 'repeat'
+        'name': 'object'
       '12':
-        'name': 'composit'
+        'name': 'object'
       '13':
         'name': 'object'
       '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
-        'name': 'object'
-      '17':
-        'name': 'option'
-      '18':
-        'name': 'composit'
-      '19':
-        'name': 'object'
-      '20':
-        'name': 'option'
-      '21':
-        'name': 'composit'
-      '22':
-        'name': 'object'
-      '23':
-        'name': 'option'
-      '24':
-        'name': 'composit'
-      '25':
-        'name': 'object'
-      '26':
-        'name': 'option'
-      '27':
-        'name': 'composit'
-      '28':
-        'name': 'object'
-      '29':
-        'name': 'option'
-      '30':
-        'name': 'composit'
-      '31':
-        'name': 'object'
-      '32':
-        'name': 'option'
-      '33':
-        'name': 'composit'
-      '34':
         'name': 'object'
 
     'name': 'queryFind'
@@ -21047,7 +20859,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryGet':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(get)\\s*(#.*)\\s*(((froms*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+get)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -21056,30 +20868,14 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'option'
+        'name': 'support.type'
       '5':
-        'name': 'composit'
+        'name': 'support.type'
       '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-      '8':
-        'name': 'option'
-      '9':
-        'name': 'composit'
-      '10':
         'name': 'punctuation.definition.identity'
-      '11':
-        'name': 'repeat'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
-      '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
+      '8':
         'name': 'object'
 
     'name': 'queryGet'
@@ -21135,7 +20931,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineCount':
-    'begin': '(?i:\\s*(count)\\s*(from)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*count)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21146,22 +20942,10 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'option'
-      '6':
-        'name': 'composit'
-      '7':
         'name': 'punctuation.definition.identity'
-      '8':
-        'name': 'repeat'
-      '9':
-        'name': 'composit'
-      '10':
+      '6':
         'name': 'object'
-      '11':
-        'name': 'option'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
 
     'name': 'queryInlineCount'
@@ -21217,7 +21001,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineDelete':
-    'begin': '(?i:\\s*(delete)\\s*(from)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*delete)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21228,22 +21012,10 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'option'
-      '6':
-        'name': 'composit'
-      '7':
         'name': 'punctuation.definition.identity'
-      '8':
-        'name': 'repeat'
-      '9':
-        'name': 'composit'
-      '10':
+      '6':
         'name': 'object'
-      '11':
-        'name': 'option'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
 
     'name': 'queryInlineDelete'
@@ -21299,7 +21071,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineFind':
-    'begin': '(?i:\\s*(from)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?))'
+    'begin': '(?i:(\\s*from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21308,58 +21080,22 @@
       '3':
         'name': 'support.type'
       '4':
-        'name': 'option'
-      '5':
-        'name': 'composit'
-      '6':
         'name': 'punctuation.definition.identity'
+      '5':
+        'name': 'object'
+      '6':
+        'name': 'object'
       '7':
-        'name': 'repeat'
+        'name': 'object'
       '8':
-        'name': 'composit'
+        'name': 'object'
       '9':
         'name': 'object'
       '10':
-        'name': 'option'
+        'name': 'object'
       '11':
-        'name': 'composit'
+        'name': 'object'
       '12':
-        'name': 'object'
-      '13':
-        'name': 'option'
-      '14':
-        'name': 'composit'
-      '15':
-        'name': 'object'
-      '16':
-        'name': 'option'
-      '17':
-        'name': 'composit'
-      '18':
-        'name': 'object'
-      '19':
-        'name': 'option'
-      '20':
-        'name': 'composit'
-      '21':
-        'name': 'object'
-      '22':
-        'name': 'option'
-      '23':
-        'name': 'composit'
-      '24':
-        'name': 'object'
-      '25':
-        'name': 'option'
-      '26':
-        'name': 'composit'
-      '27':
-        'name': 'object'
-      '28':
-        'name': 'option'
-      '29':
-        'name': 'composit'
-      '30':
         'name': 'object'
 
     'name': 'queryInlineFind'
@@ -21415,7 +21151,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineGet':
-    'begin': '(?i:\\s*(get)\\s*(from)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?))'
+    'begin': '(?i:(\\s*get)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21426,22 +21162,10 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'option'
-      '6':
-        'name': 'composit'
-      '7':
         'name': 'punctuation.definition.identity'
-      '8':
-        'name': 'repeat'
-      '9':
-        'name': 'composit'
-      '10':
+      '6':
         'name': 'object'
-      '11':
-        'name': 'option'
-      '12':
-        'name': 'composit'
-      '13':
+      '7':
         'name': 'object'
 
     'name': 'queryInlineGet'
@@ -21497,7 +21221,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineSelect':
-    'begin': '(?i:\\s*(select)\\s*(from)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?))'
+    'begin': '(?i:(\\s*select)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21508,58 +21232,22 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'option'
-      '6':
-        'name': 'composit'
-      '7':
         'name': 'punctuation.definition.identity'
+      '6':
+        'name': 'object'
+      '7':
+        'name': 'object'
       '8':
-        'name': 'repeat'
+        'name': 'object'
       '9':
-        'name': 'composit'
+        'name': 'object'
       '10':
         'name': 'object'
       '11':
-        'name': 'option'
+        'name': 'object'
       '12':
-        'name': 'composit'
+        'name': 'object'
       '13':
-        'name': 'object'
-      '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
-        'name': 'object'
-      '17':
-        'name': 'option'
-      '18':
-        'name': 'composit'
-      '19':
-        'name': 'object'
-      '20':
-        'name': 'option'
-      '21':
-        'name': 'composit'
-      '22':
-        'name': 'object'
-      '23':
-        'name': 'option'
-      '24':
-        'name': 'composit'
-      '25':
-        'name': 'object'
-      '26':
-        'name': 'option'
-      '27':
-        'name': 'composit'
-      '28':
-        'name': 'object'
-      '29':
-        'name': 'option'
-      '30':
-        'name': 'composit'
-      '31':
         'name': 'object'
 
     'name': 'queryInlineSelect'
@@ -21615,7 +21303,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'querySelect':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(select)\\s*(#.*)\\s*(((froms*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?)\\s*(((ass*[a-zA-Z][_a-zA-Z0-9]*))?)\\s*(((#.*s*object))?)\\s*(((#.*s*wheres*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?)\\s*(((#.*s*object))?))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+select)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -21624,66 +21312,26 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'option'
+        'name': 'support.type'
       '5':
-        'name': 'composit'
+        'name': 'support.type'
       '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-      '8':
-        'name': 'option'
-      '9':
-        'name': 'composit'
-      '10':
         'name': 'punctuation.definition.identity'
+      '7':
+        'name': 'object'
+      '8':
+        'name': 'object'
+      '9':
+        'name': 'object'
+      '10':
+        'name': 'object'
       '11':
-        'name': 'repeat'
+        'name': 'object'
       '12':
-        'name': 'composit'
+        'name': 'object'
       '13':
         'name': 'object'
       '14':
-        'name': 'option'
-      '15':
-        'name': 'composit'
-      '16':
-        'name': 'object'
-      '17':
-        'name': 'option'
-      '18':
-        'name': 'composit'
-      '19':
-        'name': 'object'
-      '20':
-        'name': 'option'
-      '21':
-        'name': 'composit'
-      '22':
-        'name': 'object'
-      '23':
-        'name': 'option'
-      '24':
-        'name': 'composit'
-      '25':
-        'name': 'object'
-      '26':
-        'name': 'option'
-      '27':
-        'name': 'composit'
-      '28':
-        'name': 'object'
-      '29':
-        'name': 'option'
-      '30':
-        'name': 'composit'
-      '31':
-        'name': 'object'
-      '32':
-        'name': 'option'
-      '33':
-        'name': 'composit'
-      '34':
         'name': 'object'
 
     'name': 'querySelect'
@@ -21739,7 +21387,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'readEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(read))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+read))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -21843,7 +21491,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'regex':
-    'begin': '(?i:\\s*(regex)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*regex)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21903,7 +21551,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'reload':
-    'begin': '(?i:\\s*(reload))'
+    'begin': '(?i:(\\s*reload))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21981,7 +21629,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'replace':
-    'begin': '(?i:\\s*(replace)\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(with)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*replace)(\\s+[a-zA-Z][_a-zA-Z0-9]*)(\\s+with)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22065,19 +21713,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'requestDto':
-    'begin': '(?i:\\s*(request)\\s*(((optional|list))?)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*request)(?:(?:(\\s+optional)|(\\s+list)))*\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'support.type'
-      '6':
+      '5':
         'name': 'support.type'
 
     'name': 'requestDto'
@@ -22133,17 +21779,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'requestInlineDto':
-    'begin': '(?i:\\s*(request)\\s*(((optional|list))?)\\s*(dto))'
+    'begin': '(?i:(\\s*request)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+dto))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'requestInlineDto'
@@ -22236,19 +21880,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'responseDto':
-    'begin': '(?i:\\s*(response)\\s*(((optional|list))?)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*response)(?:(?:(\\s+optional)|(\\s+list)))*\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'support.type'
-      '6':
+      '5':
         'name': 'support.type'
 
     'name': 'responseDto'
@@ -22304,17 +21946,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'responseInlineDto':
-    'begin': '(?i:\\s*(response)\\s*(((optional|list))?)\\s*(dto))'
+    'begin': '(?i:(\\s*response)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+dto))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'responseInlineDto'
@@ -22407,7 +22047,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'responseMapped':
-    'begin': '(?i:\\s*(response))'
+    'begin': '(?i:(\\s*response))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22467,7 +22107,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'responseMappedResponseMappedProperty':
-    'begin': '(?i:\\s*(response)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*response)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22589,15 +22229,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'rest':
-    'begin': '(?i:\\s*((get|post|put|delete))\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(?:(\\s*get)|(\\s*post)|(\\s*put)|(\\s*delete))(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
         'name': 'markup.inserted'
       '3':
-        'name': 'option'
+        'name': 'markup.inserted'
       '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'constant'
 
     'name': 'rest'
@@ -22653,13 +22295,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'restSimple':
-    'begin': '(?i:\\s*(rest)\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(\\s*rest)(?:(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'constant'
 
     'name': 'restSimple'
@@ -22715,7 +22355,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'saveValue':
-    'begin': '(?i:\\s*(save value)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*save value)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22775,7 +22415,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'scale':
-    'begin': '(?i:\\s*(scale)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*scale)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22835,7 +22475,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'searchable':
-    'begin': '(?i:\\s*(searchable))'
+    'begin': '(?i:(\\s*searchable))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22893,7 +22533,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'secured':
-    'begin': '(?i:\\s*(secured))'
+    'begin': '(?i:(\\s*secured))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -22953,7 +22593,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securedIdentifierElement':
-    'begin': '(?i:\\s*(secured)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*secured)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23013,7 +22653,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityAdminRole':
-    'begin': '(?i:\\s*(adminRole)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*adminRole)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23075,7 +22715,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityDefaultRole':
-    'begin': '(?i:\\s*(defaultRole)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*defaultRole)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23137,7 +22777,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'security':
-    'begin': '(?i:\\s*(security))'
+    'begin': '(?i:(\\s*security))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23218,7 +22858,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityPermission':
-    'begin': '(?i:\\s*(permission)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*permission)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23280,7 +22920,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityPrincipal':
-    'begin': '(?i:\\s*(principal)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*principal)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23342,7 +22982,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityRole':
-    'begin': '(?i:\\s*(role)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*role)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23404,7 +23044,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securitySignIn':
-    'begin': '(?i:\\s*(signIn))'
+    'begin': '(?i:(\\s*signIn))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23470,7 +23110,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securitySignInQuery':
-    'begin': '(?i:\\s*(query)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*query)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23532,7 +23172,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securitySignInResponse':
-    'begin': '(?i:\\s*(response))'
+    'begin': '(?i:(\\s*response))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23592,7 +23232,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securitySignInResponseResponseMappedProperty':
-    'begin': '(?i:\\s*(response)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*response)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23654,7 +23294,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityType':
-    'begin': '(?i:\\s*(type))'
+    'begin': '(?i:(\\s*type))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23714,13 +23354,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'securityTypeSignInTypeElement':
-    'begin': '(?i:\\s*(type)\\s*((username|email|facebook|google)))'
+    'begin': '(?i:(\\s*type)(?:(\\s+username)|(\\s+email)|(\\s+facebook)|(\\s+google)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'markup.inserted'
 
     'name': 'securityTypeSignInTypeElement'
@@ -23776,17 +23420,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'selectedProperty':
-    'begin': '(?i:\\s*(selected)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*selected)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'selectedProperty'
@@ -23842,7 +23482,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'sensitive':
-    'begin': '(?i:\\s*(sensitive))'
+    'begin': '(?i:(\\s*sensitive))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -23900,7 +23540,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverBooleanProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(boolean))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+boolean))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -23968,7 +23608,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverDecimalProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(decimal))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+decimal))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -24036,7 +23676,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverFinancial':
-    'begin': '(?i:\\s*(financial))'
+    'begin': '(?i:(\\s*financial))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -24102,7 +23742,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverIntProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(integer))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+integer))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -24170,7 +23810,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'server':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(server))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+server))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -24285,12 +23925,12 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverTemplate':
-    'begin': '(?i:\\s*(template)\\s*((java-springboot|scala)))'
+    'begin': '(?i:(\\s*template)(?:(\\s+java-springboot)|(\\s+scala)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'or'
+        'name': 'markup.inserted'
       '3':
         'name': 'markup.inserted'
 
@@ -24349,7 +23989,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverTextProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(text))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+text))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -24417,15 +24057,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverUnidentifiedProperty':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'or'
-      '3':
         'name': 'support.type'
-      '4':
+      '3':
         'name': 'support.type'
 
     'name': 'serverUnidentifiedProperty'
@@ -24489,7 +24127,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'show':
-    'begin': '(?i:\\s*(show))'
+    'begin': '(?i:(\\s*show))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -24547,11 +24185,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'signInTypeElement':
-    'begin': '(?i:\\s*((username|email|facebook|google)))'
+    'begin': '(?i:(?:(\\s*username)|(\\s*email)|(\\s*facebook)|(\\s*google)))'
     'beginCaptures':
       '1':
-        'name': 'or'
+        'name': 'markup.inserted'
       '2':
+        'name': 'markup.inserted'
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'markup.inserted'
 
     'name': 'signInTypeElement'
@@ -24607,11 +24249,9 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'simpleObject':
-    'begin': '(?i:\\s*(([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)?))'
+    'begin': '(?i:(?:(\\s*[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))*)'
     'beginCaptures':
       '1':
-        'name': 'repeat'
-      '2':
         'name': 'constant'
 
     'name': 'simpleObject'
@@ -24667,7 +24307,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'stub':
-    'begin': '(?i:\\s*(stub))'
+    'begin': '(?i:(\\s*stub))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -24725,7 +24365,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'submitEndpointSetting':
-    'begin': '(?i:\\s*(submit)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*submit)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -24787,17 +24427,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'successProperty':
-    'begin': '(?i:\\s*(success)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*success)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'successProperty'
@@ -24853,7 +24489,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'table':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(table))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+table))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -25120,7 +24756,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'takeConstant':
-    'begin': '(?i:\\s*(take)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*take)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25180,13 +24816,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'takeVariable':
-    'begin': '(?i:\\s*(take)\\s*(([a-zA-Z][_a-zA-Z0-9]*)?))'
+    'begin': '(?i:(\\s*take)(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*))?)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'option'
-      '3':
         'name': 'punctuation.definition.identity'
 
     'name': 'takeVariable'
@@ -25242,7 +24876,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'testBoolean':
-    'begin': '(?i:\\s*(test)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*test)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25302,7 +24936,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'testDecimal':
-    'begin': '(?i:\\s*(test)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*test)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25362,7 +24996,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'testEnum':
-    'begin': '(?i:\\s*(test)\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'begin': '(?i:(\\s*test)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25424,7 +25058,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'testNumber':
-    'begin': '(?i:\\s*(test)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*test)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25484,7 +25118,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'testText':
-    'begin': '(?i:\\s*(test)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*test)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25544,7 +25178,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'tracked':
-    'begin': '(?i:\\s*(tracked))'
+    'begin': '(?i:(\\s*tracked))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -25602,17 +25236,13 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiModelProperty':
-    'begin': '(?i:\\s*(model)\\s*(((.s*[a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?))'
+    'begin': '(?i:(\\s*model)(?:\\.\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'composit'
-      '4':
         'name': 'support.type'
-      '5':
+      '3':
         'name': 'support.type'
 
     'name': 'uiModelProperty'
@@ -25668,17 +25298,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyBoolean':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(boolean))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+boolean))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyBoolean'
@@ -25757,7 +25385,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyButton':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(button))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+button))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -25863,17 +25491,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyDate':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(date))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+date))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyDate'
@@ -25958,17 +25584,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyDateTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(datetime))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+datetime))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyDateTime'
@@ -26053,17 +25677,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyDecimal':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(decimal))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+decimal))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyDecimal'
@@ -26154,7 +25776,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyFacebookSignInButton':
-    'begin': '(?i:\\s*(facebookSignInButton))'
+    'begin': '(?i:(\\s*facebookSignInButton))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -26214,17 +25836,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyFile':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(file))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+file))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyFile'
@@ -26306,17 +25926,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyFileUpload':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(upload))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+upload))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyFileUpload'
@@ -26398,7 +26016,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyGoogleSignInButton':
-    'begin': '(?i:\\s*(googleSignInButton))'
+    'begin': '(?i:(\\s*googleSignInButton))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -26458,17 +26076,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyGpsCoordinates':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(gpsCoordinates))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+gpsCoordinates))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyGpsCoordinates'
@@ -26544,17 +26160,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyImage':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(image))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+image))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyImage'
@@ -26636,17 +26250,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyInt':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(integer))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+integer))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyInt'
@@ -26731,7 +26343,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyLabel':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(label))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+label))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -26808,7 +26420,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyLink':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(link))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+link))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -26914,17 +26526,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyMoney':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(money))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+money))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyMoney'
@@ -27009,17 +26619,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyText':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(text))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+text))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyText'
@@ -27107,17 +26715,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyTime':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(time))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+time))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyTime'
@@ -27202,17 +26808,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyUUID':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*(uuid))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+uuid))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'keyword'
 
     'name': 'uiPropertyUUID'
@@ -27285,17 +26889,15 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyUnidentified':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(((optional|list))?)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
-        'name': 'repeat'
-      '3':
-        'name': 'or'
-      '4':
         'name': 'markup.inserted'
-      '5':
+      '3':
+        'name': 'markup.inserted'
+      '4':
         'name': 'punctuation.definition.identity'
 
     'name': 'uiPropertyUnidentified'
@@ -27528,21 +27130,17 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'unaryCondition':
-    'begin': '(?i:\\s*((optional)?)\\s*((mandatory)?)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+)\\s*((is null|is not null)))'
+    'begin': '(?i:(?:(\\s*optional))?(?:(\\s+mandatory))?(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:(\\s+is null)|(\\s+is not null)))'
     'beginCaptures':
       '1':
-        'name': 'option'
+        'name': 'keyword'
       '2':
         'name': 'keyword'
       '3':
-        'name': 'option'
-      '4':
-        'name': 'keyword'
-      '5':
         'name': 'constant'
-      '6':
-        'name': 'or'
-      '7':
+      '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'markup.inserted'
 
     'name': 'unaryCondition'
@@ -27598,7 +27196,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'unidentifiedComponent':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*([a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -27767,7 +27365,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'unique':
-    'begin': '(?i:\\s*(unique))'
+    'begin': '(?i:(\\s*unique))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -27825,7 +27423,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'updateEndpoint':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(update))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+update))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -27982,7 +27580,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'updateValue':
-    'begin': '(?i:\\s*(update value)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*update value)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -28042,7 +27640,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'url':
-    'begin': '(?i:\\s*(url)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*url)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -28102,7 +27700,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'version':
-    'begin': '(?i:\\s*(version)\\s*([^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
+    'begin': '(?i:(\\s*version)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -28162,7 +27760,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'view':
-    'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*)\\s*(view))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+view))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -28399,7 +27997,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'visible':
-    'begin': '(?i:\\s*(visible))'
+    'begin': '(?i:(\\s*visible))'
     'beginCaptures':
       '1':
         'name': 'keyword'
