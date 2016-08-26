@@ -20,6 +20,28 @@
     'match': '#.*'
     'name': 'comment'
 
+  'opt_from':
+    'begin': '(?i:\\s*(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'support.type'
+      '3':
+        'name': 'support.type'
+    'name': 'opt_from'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
+
+  'opt_as':
+    'begin': '(?i:\\s*(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'punctuation.definition.identity'
+    'name': 'opt_as'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
+
   'api':
     'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+api))'
     'beginCaptures':
@@ -98,7 +120,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -147,58 +168,8 @@
         'name': 'markup.inserted'
       '12':
         'name': 'constant'
-
     'name': 'binaryCondition'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'bind':
     'begin': '(?i:(\\s*bind))'
@@ -247,7 +218,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -311,7 +281,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -375,7 +344,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -439,7 +407,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -503,7 +470,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -585,7 +551,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -682,7 +647,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -797,7 +761,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -863,7 +826,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -941,135 +903,6 @@
         ]
         'end': '\\)'
       }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'compositeCondition':
-    'begin': '(?i:(\\s*()(\\s+object)(\\s+)))'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'object'
-      '3':
-        'name': 'keyword'
-
-    'name': 'compositeCondition'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'conditionExpression':
-    'begin': '(?i:(?:(\\s*object)|(\\s*object)|(\\s*object))(?:\\s+(\\s*#.*)\\s+(?:(\\s*and)|(\\s*or))\\s+(\\s*#.*)\\s+(?:(\\s*object)|(\\s*object)|(\\s*object)))*)'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-      '2':
-        'name': 'object'
-      '3':
-        'name': 'object'
-      '4':
-        'name': 'markup.inserted'
-      '5':
-        'name': 'markup.inserted'
-
-    'name': 'conditionExpression'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1129,7 +962,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1189,7 +1021,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1251,7 +1082,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1390,7 +1220,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1494,7 +1323,7 @@
             'include': '#endpointQueryCount'
           }
           {
-            'include': '#endpointQueryInlineCount'
+            'include': '#queryInlineCount'
           }
           {
             'include': '#securedIdentifierElement'
@@ -1532,7 +1361,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1677,7 +1505,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1792,7 +1619,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1864,7 +1690,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -1939,7 +1764,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2030,7 +1854,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2108,7 +1931,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2186,7 +2008,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2270,7 +2091,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2374,7 +2194,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2448,7 +2267,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2526,7 +2344,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2607,7 +2424,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2685,7 +2501,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2754,7 +2569,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2841,7 +2655,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2905,7 +2718,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -2965,7 +2777,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3025,7 +2836,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3091,7 +2901,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3155,7 +2964,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3253,7 +3061,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3313,7 +3120,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3373,7 +3179,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3433,7 +3238,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3493,7 +3297,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3553,7 +3356,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3615,7 +3417,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3677,7 +3478,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3737,7 +3537,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3797,7 +3596,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3857,7 +3655,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -3902,10 +3699,10 @@
             'include': '#endpointQueryFind'
           }
           {
-            'include': '#endpointQueryInlineFind'
+            'include': '#queryInlineFind'
           }
           {
-            'include': '#endpointQueryInlineCount'
+            'include': '#queryInlineCount'
           }
           {
             'include': '#endpointQueryCount'
@@ -3914,7 +3711,7 @@
             'include': '#endpointQueryDelete'
           }
           {
-            'include': '#endpointQueryInlineDelete'
+            'include': '#queryInlineDelete'
           }
           {
             'include': '#responseMappedResponseMappedProperty'
@@ -3961,7 +3758,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4021,7 +3817,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4081,7 +3876,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4110,58 +3904,8 @@
         'name': 'keyword'
       '2':
         'name': 'constant'
-
     'name': 'dropConstant'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'dropDown':
     'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+dropdown))'
@@ -4310,7 +4054,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4458,58 +4201,8 @@
         'name': 'keyword'
       '2':
         'name': 'punctuation.definition.identity'
-
     'name': 'dropVariable'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'dto':
     'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+dto))'
@@ -4586,7 +4279,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4655,7 +4347,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4727,7 +4418,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4802,7 +4492,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4877,7 +4566,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -4958,7 +4646,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5062,7 +4749,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5133,7 +4819,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5208,7 +4893,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5286,7 +4970,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5361,7 +5044,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5427,7 +5109,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5549,7 +5230,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5611,7 +5291,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5703,7 +5382,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5763,7 +5441,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5823,7 +5500,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5885,7 +5561,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -5947,7 +5622,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6009,297 +5683,6 @@
         ]
         'end': '\\)'
       }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryInlineCount':
-    'begin': '(?i:(\\s*object))'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-
-    'name': 'endpointQueryInlineCount'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryInlineDelete':
-    'begin': '(?i:(\\s*object))'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-
-    'name': 'endpointQueryInlineDelete'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryInlineFind':
-    'begin': '(?i:(\\s*object))'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-
-    'name': 'endpointQueryInlineFind'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryInlineGet':
-    'begin': '(?i:(\\s*object))'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-
-    'name': 'endpointQueryInlineGet'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryInlineSelect':
-    'begin': '(?i:(\\s*object))'
-    'beginCaptures':
-      '1':
-        'name': 'object'
-
-    'name': 'endpointQueryInlineSelect'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6361,7 +5744,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6423,7 +5805,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6485,7 +5866,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6545,7 +5925,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6611,7 +5990,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6702,7 +6080,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6764,7 +6141,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6828,7 +6204,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -6873,7 +6248,7 @@
             'include': '#endpointQueryFind'
           }
           {
-            'include': '#endpointQueryInlineFind'
+            'include': '#queryInlineFind'
           }
           {
             'include': '#responseMappedResponseMappedProperty'
@@ -6920,7 +6295,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7002,7 +6376,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7153,7 +6526,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7357,7 +6729,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7415,7 +6786,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7473,7 +6843,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7535,7 +6904,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7595,7 +6963,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7655,7 +7022,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7713,7 +7079,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7771,7 +7136,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -7928,7 +7292,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -8156,7 +7519,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -8444,7 +7806,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -8729,7 +8090,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9017,7 +8377,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9302,7 +8661,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9587,7 +8945,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9738,7 +9095,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9772,67 +9128,21 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'punctuation.definition.identity'
-      '6':
         'name': 'keyword'
-      '7':
+      '6':
         'name': 'punctuation.definition.identity'
+      '7':
+        'name': 'keyword'
       '8':
-        'name': 'support.type'
+        'name': 'punctuation.definition.identity'
       '9':
+        'name': 'keyword'
+      '10':
         'name': 'support.type'
-
+      '11':
+        'name': 'support.type'
     'name': 'join'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'key':
     'begin': '(?i:(\\s*key)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
@@ -9872,7 +9182,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -9930,7 +9239,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10078,7 +9386,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10259,7 +9566,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10321,7 +9627,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10379,7 +9684,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10439,7 +9743,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10499,7 +9802,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10559,7 +9861,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10619,7 +9920,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10679,7 +9979,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10739,7 +10038,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10799,7 +10097,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10859,7 +10156,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10919,7 +10215,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -10979,7 +10274,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11039,7 +10333,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11099,7 +10392,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11159,7 +10451,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11248,7 +10539,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11372,7 +10662,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11454,7 +10743,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11539,7 +10827,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11627,7 +10914,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11715,7 +11001,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11809,7 +11094,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11896,7 +11180,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -11984,7 +11267,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12078,7 +11360,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12166,7 +11447,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12245,7 +11525,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12268,7 +11547,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelPropertyUnidentified':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(?:(\\s+list))?(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*)))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(\\s+optional))?(?:(\\s+list))?\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -12277,7 +11556,9 @@
       '3':
         'name': 'keyword'
       '4':
-        'name': 'punctuation.definition.identity'
+        'name': 'support.type'
+      '5':
+        'name': 'support.type'
 
     'name': 'modelPropertyUnidentified'
     'patterns':[
@@ -12341,7 +11622,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12403,7 +11683,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12465,7 +11744,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12616,7 +11894,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12795,7 +12072,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12855,7 +12131,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12917,7 +12192,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -12979,7 +12253,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13039,7 +12312,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13125,7 +12397,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13211,7 +12482,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13297,7 +12567,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13379,7 +12648,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13461,7 +12729,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13549,7 +12816,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13635,7 +12901,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13697,7 +12962,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13759,7 +13023,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13845,7 +13108,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -13960,7 +13222,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14046,7 +13307,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14132,7 +13392,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14214,7 +13473,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14296,7 +13554,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14384,7 +13641,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14470,7 +13726,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14532,7 +13787,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14594,7 +13848,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14680,7 +13933,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14797,7 +14049,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14885,7 +14136,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -14973,7 +14223,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15057,7 +14306,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15141,7 +14389,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15231,7 +14478,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15319,7 +14565,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15383,7 +14628,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15447,7 +14691,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15535,7 +14778,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15650,7 +14892,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15736,7 +14977,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15822,7 +15062,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15904,7 +15143,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -15986,7 +15224,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16074,7 +15311,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16160,7 +15396,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16222,7 +15457,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16284,7 +15518,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16370,7 +15603,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16485,7 +15717,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16571,7 +15802,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16657,7 +15887,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16739,7 +15968,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16821,7 +16049,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16909,7 +16136,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -16995,7 +16221,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17057,7 +16282,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17119,7 +16343,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17205,7 +16428,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17320,7 +16542,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17406,7 +16627,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17492,7 +16712,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17574,7 +16793,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17656,7 +16874,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17744,7 +16961,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17830,7 +17046,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17892,7 +17107,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -17954,7 +17168,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18040,7 +17253,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18151,7 +17363,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18178,126 +17389,8 @@
     'beginCaptures':
       '1':
         'name': 'keyword'
-
     'name': 'orderBy'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#orderByProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'orderByOrderByProperty':
-    'begin': '(?i:(\\s*order by)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:(\\s+asc)|(\\s+desc)))'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-      '4':
-        'name': 'markup.inserted'
-      '5':
-        'name': 'markup.inserted'
-
-    'name': 'orderByOrderByProperty'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'orderByProperty':
     'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:(\\s+asc)|(\\s+desc)))'
@@ -18341,7 +17434,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18368,122 +17460,8 @@
     'beginCaptures':
       '1':
         'name': 'keyword'
-
     'name': 'orderableBy'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#orderableByProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
-
-  'orderableByOrderableByProperty':
-    'begin': '(?i:(\\s*orderable by)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-
-    'name': 'orderableByOrderableByProperty'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'orderableByProperty':
     'begin': '(?i:\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
@@ -18523,7 +17501,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18674,7 +17651,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18778,10 +17754,10 @@
             'include': '#endpointQueryFind'
           }
           {
-            'include': '#endpointQueryInlineFind'
+            'include': '#queryInlineFind'
           }
           {
-            'include': '#endpointQueryInlineCount'
+            'include': '#queryInlineCount'
           }
           {
             'include': '#endpointQueryCount'
@@ -18831,7 +17807,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18889,7 +17864,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -18978,7 +17952,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19040,7 +18013,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19100,7 +18072,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19160,7 +18131,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19220,7 +18190,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19280,7 +18249,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19338,7 +18306,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19398,7 +18365,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19456,7 +18422,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19518,7 +18483,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19578,7 +18542,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19638,7 +18601,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19700,7 +18662,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19760,7 +18721,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19820,7 +18780,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19890,7 +18849,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -19950,7 +18908,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20010,7 +18967,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20070,7 +19026,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20130,7 +19085,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20190,7 +19144,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20252,7 +19205,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20312,7 +19264,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20372,7 +19323,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20432,7 +19382,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20490,7 +19439,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20548,7 +19496,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20608,7 +19555,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -20631,307 +19577,137 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryCount':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+count)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+count))(\\n)?'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
         'name': 'keyword'
-      '3':
-        'name': 'comment'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'punctuation.definition.identity'
-      '7':
-        'name': 'object'
-      '8':
-        'name': 'object'
-
-    'name': 'queryCount'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryCount'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryDelete':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+delete)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+delete))(\\n)?'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
         'name': 'keyword'
-      '3':
-        'name': 'comment'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'punctuation.definition.identity'
-      '7':
-        'name': 'object'
-      '8':
-        'name': 'object'
-
-    'name': 'queryDelete'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryDelete'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryFind':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+find)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+find))(\\n)?'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
         'name': 'keyword'
-      '3':
-        'name': 'comment'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'punctuation.definition.identity'
-      '7':
-        'name': 'object'
-      '8':
-        'name': 'object'
-      '9':
-        'name': 'object'
-      '10':
-        'name': 'object'
-      '11':
-        'name': 'object'
-      '12':
-        'name': 'object'
-      '13':
-        'name': 'object'
-      '14':
-        'name': 'object'
-
-    'name': 'queryFind'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#dropConstant'
+       }
+       {
+         'include': '#dropVariable'
+       }
+       {
+         'include': '#takeConstant'
+       }
+       {
+         'include': '#takeVariable'
+       }
+       {
+         'include': '#orderBy'
+       }
+       {
+         'include': '#orderableBy'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryFind'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryGet':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+get)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+get))(\\n)?'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
       '2':
         'name': 'keyword'
-      '3':
-        'name': 'comment'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'punctuation.definition.identity'
-      '7':
-        'name': 'object'
-      '8':
-        'name': 'object'
-
-    'name': 'queryGet'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryGet'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineCount':
-    'begin': '(?i:(\\s*count)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*count)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?)(\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -20942,66 +19718,50 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'punctuation.definition.identity'
+        'name': 'keyword'
       '6':
-        'name': 'object'
-      '7':
-        'name': 'object'
-
-    'name': 'queryInlineCount'
+        'name': 'punctuation.definition.identity'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#dropConstant'
+       }
+       {
+         'include': '#dropVariable'
+       }
+       {
+         'include': '#takeConstant'
+       }
+       {
+         'include': '#takeVariable'
+       }
+       {
+         'include': '#orderBy'
+       }
+       {
+         'include': '#orderableBy'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryInlineCount'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineDelete':
-    'begin': '(?i:(\\s*delete)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*delete)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?)(\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21012,66 +19772,26 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'punctuation.definition.identity'
+        'name': 'keyword'
       '6':
-        'name': 'object'
-      '7':
-        'name': 'object'
-
-    'name': 'queryInlineDelete'
+        'name': 'punctuation.definition.identity'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryInlineDelete'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineFind':
-    'begin': '(?i:(\\s*from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))*)(\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21080,78 +19800,54 @@
       '3':
         'name': 'support.type'
       '4':
-        'name': 'punctuation.definition.identity'
+        'name': 'keyword'
       '5':
-        'name': 'object'
+        'name': 'punctuation.definition.identity'
       '6':
-        'name': 'object'
+        'name': 'comment'
       '7':
         'name': 'object'
-      '8':
-        'name': 'object'
-      '9':
-        'name': 'object'
-      '10':
-        'name': 'object'
-      '11':
-        'name': 'object'
-      '12':
-        'name': 'object'
-
-    'name': 'queryInlineFind'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#opt_from'
+       }
+       {
+         'include': '#opt_as'
+       }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#dropConstant'
+       }
+       {
+         'include': '#dropVariable'
+       }
+       {
+         'include': '#takeConstant'
+       }
+       {
+         'include': '#takeVariable'
+       }
+       {
+         'include': '#orderBy'
+       }
+       {
+         'include': '#orderableBy'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryInlineFind'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineGet':
-    'begin': '(?i:(\\s*get)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*get)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?)(\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21162,66 +19858,26 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'punctuation.definition.identity'
+        'name': 'keyword'
       '6':
-        'name': 'object'
-      '7':
-        'name': 'object'
-
-    'name': 'queryInlineGet'
+        'name': 'punctuation.definition.identity'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryInlineGet'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'queryInlineSelect':
-    'begin': '(?i:(\\s*select)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*select)(\\s+from)\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?)(\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -21232,78 +19888,26 @@
       '4':
         'name': 'support.type'
       '5':
-        'name': 'punctuation.definition.identity'
+        'name': 'keyword'
       '6':
-        'name': 'object'
-      '7':
-        'name': 'object'
-      '8':
-        'name': 'object'
-      '9':
-        'name': 'object'
-      '10':
-        'name': 'object'
-      '11':
-        'name': 'object'
-      '12':
-        'name': 'object'
-      '13':
-        'name': 'object'
-
-    'name': 'queryInlineSelect'
+        'name': 'punctuation.definition.identity'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
+       {
+         'include': '#join'
+       }
+       {
+         'include': '#where'
+       }
+       {
+         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+         'name': 'invalid.illegal'
+       }
     ]
+    'name': 'queryInlineSelect'
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'querySelect':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+select)(\\s+#.*)(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(\\s*#.*)\\s+(\\s*object))*(?:\\s+(\\s*#.*)\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?(?:\\s+(\\s*#.*)\\s+(\\s*object))?)'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+select)(?:\\s*(#.*|\\n))?(?:\\s+(\\s*from)\\s+\\s*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))?(?:\\s+(\\s*as)\\s+(\\s*[a-zA-Z][_a-zA-Z0-9]*))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))*(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*where)\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?(?:\\s+(?:\\s*(#.*|\\n))?\\s+(\\s*object))?)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -21312,26 +19916,48 @@
       '3':
         'name': 'comment'
       '4':
-        'name': 'support.type'
+        'name': 'keyword'
       '5':
         'name': 'support.type'
       '6':
-        'name': 'punctuation.definition.identity'
+        'name': 'support.type'
       '7':
-        'name': 'object'
+        'name': 'keyword'
       '8':
-        'name': 'object'
+        'name': 'punctuation.definition.identity'
       '9':
-        'name': 'object'
+        'name': 'comment'
       '10':
         'name': 'object'
       '11':
-        'name': 'object'
+        'name': 'comment'
       '12':
-        'name': 'object'
+        'name': 'keyword'
       '13':
         'name': 'object'
       '14':
+        'name': 'comment'
+      '15':
+        'name': 'object'
+      '16':
+        'name': 'comment'
+      '17':
+        'name': 'object'
+      '18':
+        'name': 'comment'
+      '19':
+        'name': 'object'
+      '20':
+        'name': 'comment'
+      '21':
+        'name': 'object'
+      '22':
+        'name': 'comment'
+      '23':
+        'name': 'object'
+      '24':
+        'name': 'comment'
+      '25':
         'name': 'object'
 
     'name': 'querySelect'
@@ -21364,7 +19990,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21409,10 +20034,10 @@
             'include': '#endpointQueryFind'
           }
           {
-            'include': '#endpointQueryInlineFind'
+            'include': '#queryInlineFind'
           }
           {
-            'include': '#endpointQueryInlineGet'
+            'include': '#queryInlineGet'
           }
           {
             'include': '#responseMappedResponseMappedProperty'
@@ -21421,7 +20046,7 @@
             'include': '#responseMapped'
           }
           {
-            'include': '#endpointQueryInlineSelect'
+            'include': '#queryInlineSelect'
           }
           {
             'include': '#endpointQuerySelect'
@@ -21468,7 +20093,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21528,7 +20152,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21606,7 +20229,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21690,7 +20312,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21756,7 +20377,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21857,7 +20477,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -21923,7 +20542,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22024,7 +20642,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22084,7 +20701,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22146,7 +20762,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22206,7 +20821,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22272,7 +20886,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22332,7 +20945,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22392,7 +21004,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22452,7 +21063,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22510,7 +21120,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22570,7 +21179,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22630,7 +21238,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22692,7 +21299,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22754,7 +21360,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22835,7 +21440,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22897,7 +21501,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -22959,7 +21562,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23021,7 +21623,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23087,7 +21688,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23149,7 +21749,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23209,7 +21808,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23271,7 +21869,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23331,7 +21928,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23397,7 +21993,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23459,7 +22054,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23517,7 +22111,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23585,7 +22178,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23653,7 +22245,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23719,7 +22310,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23787,7 +22377,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23902,7 +22491,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -23925,13 +22513,11 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'serverTemplate':
-    'begin': '(?i:(\\s*template)(?:(\\s+java-springboot)|(\\s+scala)))'
+    'begin': '(?i:(\\s*template)(?:(\\s+java-springboot)))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
-        'name': 'markup.inserted'
-      '3':
         'name': 'markup.inserted'
 
     'name': 'serverTemplate'
@@ -23966,7 +22552,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24034,7 +22619,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24104,7 +22688,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24162,7 +22745,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24226,7 +22808,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24284,7 +22865,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24342,7 +22922,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24404,7 +22983,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24466,7 +23044,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24614,7 +23191,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24762,58 +23338,8 @@
         'name': 'keyword'
       '2':
         'name': 'constant'
-
     'name': 'takeConstant'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'takeVariable':
     'begin': '(?i:(\\s*take)(?:(\\s+[a-zA-Z][_a-zA-Z0-9]*))?)'
@@ -24822,58 +23348,8 @@
         'name': 'keyword'
       '2':
         'name': 'punctuation.definition.identity'
-
     'name': 'takeVariable'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'testBoolean':
     'begin': '(?i:(\\s*test)(\\s+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))'
@@ -24913,7 +23389,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -24973,7 +23448,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25035,7 +23509,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25095,7 +23568,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25155,7 +23627,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25213,7 +23684,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25275,7 +23745,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25362,7 +23831,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25439,7 +23907,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25561,7 +24028,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25654,7 +24120,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25753,7 +24218,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25813,7 +24277,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25903,7 +24366,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -25993,7 +24455,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26053,7 +24514,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26137,7 +24597,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26227,7 +24686,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26320,7 +24778,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26397,7 +24854,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26474,7 +24930,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26596,7 +25051,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26692,7 +25146,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26785,7 +25238,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26866,7 +25318,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -26889,7 +25340,7 @@
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyUnidentified':
-    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
+    'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:(\\s+optional)|(\\s+list)))*\\s+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -26898,7 +25349,9 @@
       '3':
         'name': 'markup.inserted'
       '4':
-        'name': 'punctuation.definition.identity'
+        'name': 'support.type'
+      '5':
+        'name': 'support.type'
 
     'name': 'uiPropertyUnidentified'
     'patterns':[
@@ -26958,7 +25411,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27142,58 +25594,8 @@
         'name': 'markup.inserted'
       '5':
         'name': 'markup.inserted'
-
     'name': 'unaryCondition'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\s+)(\\n)?|(?=(,|#|\\]|\\)|\\}))'
 
   'unidentifiedComponent':
     'begin': '(?i:(\\s*[a-zA-Z][_a-zA-Z0-9]*)(\\s+[a-zA-Z][_a-zA-Z0-9]*))'
@@ -27342,7 +25744,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27400,7 +25801,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27448,16 +25848,16 @@
             'include': '#endpointQueryFind'
           }
           {
-            'include': '#endpointQueryInlineFind'
+            'include': '#queryInlineFind'
           }
           {
-            'include': '#endpointQueryInlineCount'
+            'include': '#queryInlineCount'
           }
           {
             'include': '#endpointQueryCount'
           }
           {
-            'include': '#endpointQueryInlineSelect'
+            'include': '#queryInlineSelect'
           }
           {
             'include': '#endpointQuerySelect'
@@ -27557,7 +25957,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27617,7 +26016,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27677,7 +26075,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27737,7 +26134,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -27885,7 +26281,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -28034,7 +26429,6 @@
         ]
         'end': '\\)'
       }
-
       {
         'begin': '\\{'
         'patterns': [
@@ -28056,4 +26450,51 @@
     ]
     'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
 
-       
+
+
+  'logical':
+    'patterns': [
+      {
+        'include': '#comments'
+      }
+      {
+        'include': '#binaryCondition'
+      }
+      {
+        'include': "#unaryCondition"
+      }
+      {
+        'match': '\\s*and'
+        'name': 'keyword'
+      }
+      {
+        'match': '\\s*or'
+        'name': 'keyword'
+      }
+      {
+        'begin': '\\s*\\('
+        'patterns': [
+          {
+            'include': '#logical'
+          }
+        ]
+        'end': '\\s*\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+
+  'where':
+    'begin': '(?i:(\\s*where))(\\n)?'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'patterns': [
+      {
+        'include': '#logical'
+      }
+    ]
+    'name': 'where'
+    'end': '(?=\\s*(,|#|\\]|\\)|\\}|\\n))'
