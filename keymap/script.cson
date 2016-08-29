@@ -1,0 +1,13 @@
+# For more detailed documentation see
+# https://atom.io/docs/latest/advanced/keymaps
+
+# Only bind the keys in the editor
+'.platform-darwin atom-text-editor':
+  'cmd-c': 'script:compile'
+  'cmd-g': 'script:generate'
+  'cmd-m': 'script:generateWithMigrate'
+
+'.platform-win32 atom-text-editor, .platform-linux atom-text-editor':
+  'shift-ctrl-c': 'sifu:compile'
+  'shift-ctrl-g': 'sifu:generate'
+  'shift-ctrl-m': 'sifu:generateWithMigrate'
