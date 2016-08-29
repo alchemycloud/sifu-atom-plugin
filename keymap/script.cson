@@ -3,11 +3,11 @@
 
 # Only bind the keys in the editor
 '.platform-darwin atom-text-editor':
-  'cmd-c': 'script:compile'
-  'cmd-g': 'script:generate'
-  'cmd-m': 'script:generateWithMigrate'
+  'cmd-alt-c': 'script:compile'
+  'cmd-alt-g': 'script:generate'
+  'cmd-alt-m': 'script:generateWithMigrate'
 
 '.platform-win32 atom-text-editor, .platform-linux atom-text-editor':
-  'shift-ctrl-c': 'sifu:compile'
-  'shift-ctrl-g': 'sifu:generate'
-  'shift-ctrl-m': 'sifu:generateWithMigrate'
+  'ctrl-shift-c': 'sifu:compile'
+  'ctrl-shift-g': 'sifu:generate'
+  'ctrl-shift-m': 'sifu:generateWithMigrate'
