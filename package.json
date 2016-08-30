@@ -11,12 +11,22 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "main": "./lib/main",
-  "activationCommands": {
-    "atom-workspace": [
-      "run-command:run",
-      "run-command:toggle-panel",
-      "run-command:kill-last-command"
-    ]
-  }
+
+  "main": "./lib/sifu",
+
+  "dependencies": {
+    "atom-linter": "^8.0.0",
+    "atom-package-deps": "^4.0.1"
+  },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "package-deps": [
+    "linter"
+  ]
+
 }

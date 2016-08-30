@@ -3,4 +3,4 @@
 
 '.source.sifu':
   'editor':
-    'commentStart': '@@ '
+    'commentStart': '# '
