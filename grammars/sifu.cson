@@ -1175,6 +1175,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -4009,6 +4012,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -6481,6 +6487,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -7247,6 +7256,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -7472,6 +7484,9 @@
           }
           {
             'include': '#uiPropertyImage'
+          }
+          {
+            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -7761,6 +7776,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8043,6 +8061,9 @@
           }
           {
             'include': '#uiPropertyImage'
+          }
+          {
+            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -8332,6 +8353,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8616,6 +8640,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8898,6 +8925,9 @@
           }
           {
             'include': '#uiPropertyImage'
+          }
+          {
+            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -9339,6 +9369,9 @@
           }
           {
             'include': '#uiPropertyImage'
+          }
+          {
+            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -11847,6 +11880,9 @@
           }
           {
             'include': '#uiPropertyImage'
+          }
+          {
+            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -17642,6 +17678,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -23182,6 +23221,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -24424,7 +24466,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'uiPropertyFileUpload':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+upload)'
+    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+upload file)'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -24667,6 +24709,95 @@
         'name': 'keyword'
 
     'name': 'uiPropertyImage'
+    'patterns':[
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#minNumber'
+          }
+          {
+            'include': '#maxNumber'
+          }
+          {
+            'include': '#sensitive'
+          }
+          {
+            'include': '#hidden'
+          }
+          {
+            'include': '#bindParamsProperty'
+          }
+          {
+            'include': '#bindUiModelProperty'
+          }
+          {
+            'include': '#bindItemProperty'
+          }
+          {
+            'include': '#bindPrincipalProperty'
+          }
+          {
+            'include': '#bind'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\]'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'uiPropertyImageUpload':
+    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+upload image)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.identity'
+      '2':
+        'name': 'markup.inserted'
+      '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'keyword'
+
+    'name': 'uiPropertyImageUpload'
     'patterns':[
       {
         'begin': '\\['
@@ -25735,6 +25866,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -26272,6 +26406,9 @@
             'include': '#uiPropertyImage'
           }
           {
+            'include': '#uiPropertyImageUpload'
+          }
+          {
             'include': '#uiPropertyButton'
           }
           {
@@ -26534,4 +26671,3 @@
     ]
     'name': 'where'
     'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*and )(?![ \\t]*or )(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+is null)|([ \\t]+is not null)))|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-       

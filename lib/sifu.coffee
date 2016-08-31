@@ -36,10 +36,8 @@ module.exports =
     lint: (textEditor) =>
       filePath = textEditor.getPath()
       wd = path.dirname filePath
-      searchDir = @getProjectRootDir() || path.dirname filePath
-      @_log 'starting to lint.'
 
-      lstats = fs.lstatSync searchDir
+      @_log 'starting to lint.'
 
       args = ['validate'] # Arguments to javac
 
@@ -55,7 +53,7 @@ module.exports =
         @parse(val, textEditor)
 
   parse: (javacOutput, textEditor) ->
-    messages = []
+    errors = []
 
     # This regex helps to estimate the column number based on the
     #   caret (^) location.
@@ -68,7 +66,7 @@ module.exports =
       if !!match
         [lineNum, mess] = match[1..2]
         lineNum-- # Fix range-beginning
-        messages.push
+        errors.push
           type: "error"
           text: mess.replace /\[\d+m/g, ''
           filePath: textEditor.getPath()   # Full path to file
@@ -78,33 +76,20 @@ module.exports =
       if !!match2
         [lineNum, lineRow, mess] = match2[1..3]
         lineNum-- # Fix range-beginning
-        messages.push
+        errors.push
           type: "error"
           text: mess.replace /\[\d+m/g, ''
           filePath: textEditor.getPath()   # Full path to file
           range: [[lineNum, 0], [lineNum, 0]] # Set range-beginnings
 
-    @_log 'returning', messages.length, 'linter-messages.'
+    @_log 'returning', errors.length, 'linter-messages.'
 
-    atom.notifications.addInfo("Validating completed.")
-    return messages
+    if (errors.length == 0)
+      atom.notifications.addInfo("Validating completed without errors.")
+    else
+      atom.notifications.addError("Validation failed!")
 
-  getProjectRootDir: ->
-    textEditor = atom.workspace.getActiveTextEditor()
-    if !textEditor || !textEditor.getPath()
-      # default to building the first one if no editor is active
-      if not atom.project.getPaths().length
-        return false
-
-      return atom.project.getPaths()[0]
-
-    # otherwise, build the one in the root of the active editor
-    return atom.project.getPaths()
-    .sort((a, b) -> (b.length - a.length))
-    .find (p) ->
-      realpath = fs.realpathSync(p)
-      # TODO: The following fails if there's a symlink in the path
-      return textEditor.getPath().substr(0, realpath.length) == realpath
+    return errors
 
   _log: (msgs...) ->
     javacPrefix = 'linter-javac: '
