@@ -1172,12 +1172,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -4009,12 +4003,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -5163,6 +5151,9 @@
             'include': '#comments'
           }
           {
+            'include': '#file'
+          }
+          {
             'include': '#minAny'
           }
           {
@@ -6168,6 +6159,65 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'file':
+    'begin': '([ \\t]*type)(?:([ \\t]+image))'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'markup.inserted'
+
+    'name': 'file'
+    'patterns':[
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\]'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'fileStorage':
     'begin': '([ \\t]*file storage)(?:([ \\t]+db)|([ \\t]+fs)|([ \\t]+aws))'
     'beginCaptures':
@@ -6482,12 +6532,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -7253,12 +7297,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -7481,12 +7519,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -7773,12 +7805,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8058,12 +8084,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -8350,12 +8370,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8637,12 +8651,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -8922,12 +8930,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -9366,12 +9368,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -11602,6 +11598,9 @@
             'include': '#comments'
           }
           {
+            'include': '#file'
+          }
+          {
             'include': '#primaryKey'
           }
           {
@@ -11877,12 +11876,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -17675,12 +17668,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -23218,12 +23205,6 @@
             'include': '#uiPropertyMoney'
           }
           {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
-          }
-          {
             'include': '#uiPropertyButton'
           }
           {
@@ -24397,6 +24378,9 @@
             'include': '#comments'
           }
           {
+            'include': '#file'
+          }
+          {
             'include': '#minNumber'
           }
           {
@@ -24484,6 +24468,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#file'
           }
           {
             'include': '#minNumber'
@@ -24632,184 +24619,6 @@
         'patterns': [
           {
             'include': '#comments'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#hidden'
-          }
-          {
-            'include': '#bindParamsProperty'
-          }
-          {
-            'include': '#bindUiModelProperty'
-          }
-          {
-            'include': '#bindItemProperty'
-          }
-          {
-            'include': '#bindPrincipalProperty'
-          }
-          {
-            'include': '#bind'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'uiPropertyImage':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+image)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-
-    'name': 'uiPropertyImage'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minNumber'
-          }
-          {
-            'include': '#maxNumber'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#hidden'
-          }
-          {
-            'include': '#bindParamsProperty'
-          }
-          {
-            'include': '#bindUiModelProperty'
-          }
-          {
-            'include': '#bindItemProperty'
-          }
-          {
-            'include': '#bindPrincipalProperty'
-          }
-          {
-            'include': '#bind'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'uiPropertyImageUpload':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+upload image)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-
-    'name': 'uiPropertyImageUpload'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minNumber'
-          }
-          {
-            'include': '#maxNumber'
           }
           {
             'include': '#sensitive'
@@ -25529,6 +25338,9 @@
             'include': '#comments'
           }
           {
+            'include': '#file'
+          }
+          {
             'include': '#hidden'
           }
           {
@@ -25861,12 +25673,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
@@ -26401,12 +26207,6 @@
           }
           {
             'include': '#uiPropertyMoney'
-          }
-          {
-            'include': '#uiPropertyImage'
-          }
-          {
-            'include': '#uiPropertyImageUpload'
           }
           {
             'include': '#uiPropertyButton'
