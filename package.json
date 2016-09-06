@@ -1,6 +1,6 @@
 {
   "name": "language-sifu",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Sifu DSL language plugin",
   "keywords": [
     "language",
