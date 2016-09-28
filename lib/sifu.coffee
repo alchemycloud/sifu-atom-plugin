@@ -39,7 +39,7 @@ module.exports =
 
       @_log 'starting to lint.'
 
-      args = ['validate'] # Arguments to javac
+      args = ['validate', '-f', filePath.split(/\//).pop()] # Arguments to javac
 
       # Execute javac
       atom.notifications.addInfo("Validating specification... it will take few seconds.")
