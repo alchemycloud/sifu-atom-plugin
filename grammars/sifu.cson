@@ -783,7 +783,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'clientTemplate':
-    'begin': '([ \\t]*template)(?:([ \\t]+js-angular)|([ \\t]+android)|([ \\t]+ios))'
+    'begin': '([ \\t]*template)(?:([ \\t]+js-angular)|([ \\t]+js-angular2)|([ \\t]+android)|([ \\t]+ios))'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -792,6 +792,8 @@
       '3':
         'name': 'markup.inserted'
       '4':
+        'name': 'markup.inserted'
+      '5':
         'name': 'markup.inserted'
 
     'name': 'clientTemplate'
@@ -3436,13 +3438,21 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'defaultModelType':
-    'begin': '([ \\t]*default model type)(?:([ \\t]+sql)|([ \\t]+nosql))'
+    'begin': '([ \\t]*default model type)(?:([ \\t]+mysql)|([ \\t]+mongodb)|([ \\t]+h2)|([ \\t]+postgresql)|([ \\t]+mssql)|([ \\t]+cassandra))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'markup.inserted'
+      '5':
+        'name': 'markup.inserted'
+      '6':
+        'name': 'markup.inserted'
+      '7':
         'name': 'markup.inserted'
 
     'name': 'defaultModelType'
@@ -11737,13 +11747,21 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'modelType':
-    'begin': '([ \\t]*type)(?:([ \\t]+sql)|([ \\t]+nosql))'
+    'begin': '([ \\t]*type)(?:([ \\t]+mysql)|([ \\t]+mongodb)|([ \\t]+h2)|([ \\t]+postgresql)|([ \\t]+mssql)|([ \\t]+cassandra))'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'markup.inserted'
       '3':
+        'name': 'markup.inserted'
+      '4':
+        'name': 'markup.inserted'
+      '5':
+        'name': 'markup.inserted'
+      '6':
+        'name': 'markup.inserted'
+      '7':
         'name': 'markup.inserted'
 
     'name': 'modelType'
