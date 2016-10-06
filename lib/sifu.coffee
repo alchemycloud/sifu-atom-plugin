@@ -42,7 +42,7 @@ module.exports =
       args = ['validate', '-f', filePath.split(/\//).pop()] # Arguments to javac
 
       # Execute javac
-      atom.notifications.addInfo("Validating specification... it will take few seconds.")
+      atom.notifications.addInfo("validating specification... it should take a few seconds...")
       helpers.exec("sifu", args, {
         stream: 'stdout',
         cwd: wd,
