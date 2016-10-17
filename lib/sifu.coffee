@@ -62,7 +62,7 @@ module.exports =
     lines = javacOutput.split /\r?\n/
 
     for line in lines
-      match = line.match /.+\[ERROR\].* (\d+).+<-(.*)/
+      match = line.match /.+\[ERROR\][^ ]* (\d+).+<-(.*)/
       if !!match
         [lineNum, mess] = match[1..2]
         lineNum-- # Fix range-beginning
