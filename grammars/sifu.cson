@@ -153,75 +153,6 @@
     'name': 'binaryCondition'
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
 
-  'bind':
-    'begin': '([ \\t]*bind)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'bind'
-    'patterns':[
-      {
-        'include': '#empty'
-      }
-      {
-        'include': '#ignore'
-      }
-      {
-        'include': '#constant'
-      }
-      {
-        'include': '#paramsProperty'
-      }
-      {
-        'include': '#uiModelProperty'
-      }
-      {
-        'include': '#itemProperty'
-      }
-      {
-        'include': '#principalProperty'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#empty'
-          }
-          {
-            'include': '#ignore'
-          }
-          {
-            'include': '#constant'
-          }
-          {
-            'include': '#paramsProperty'
-          }
-          {
-            'include': '#uiModelProperty'
-          }
-          {
-            'include': '#itemProperty'
-          }
-          {
-            'include': '#principalProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
   'callEndpoint':
     'begin': '([ \\t]*call)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
@@ -689,6 +620,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
@@ -2121,7 +2055,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -2244,6 +2178,9 @@
           }
           {
             'include': '#onSelect'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
@@ -3676,6 +3613,9 @@
             'include': '#onSuccess'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -3903,7 +3843,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'ignore':
-    'begin': '([ \\t]*\\*)'
+    'begin': '[ \\t]*\\*'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -3953,7 +3893,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -4060,6 +4000,9 @@
             'include': '#comments'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4102,7 +4045,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -4227,6 +4170,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4269,7 +4215,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -4394,6 +4340,9 @@
             'include': '#onSuccess'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4436,7 +4385,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -4558,6 +4507,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4600,7 +4552,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#enumSetting'
@@ -4725,6 +4677,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4767,7 +4722,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -4889,6 +4844,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -4931,7 +4889,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#params'
@@ -5050,6 +5008,9 @@
             'include': '#onLoad'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -5061,6 +5022,75 @@
           }
         ]
         'end': '\\}'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'input':
+    'begin': '([ \\t]*input)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'input'
+    'patterns':[
+      {
+        'include': '#empty'
+      }
+      {
+        'include': '#ignore'
+      }
+      {
+        'include': '#constant'
+      }
+      {
+        'include': '#paramsProperty'
+      }
+      {
+        'include': '#uiModelProperty'
+      }
+      {
+        'include': '#itemProperty'
+      }
+      {
+        'include': '#principalProperty'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#empty'
+          }
+          {
+            'include': '#ignore'
+          }
+          {
+            'include': '#constant'
+          }
+          {
+            'include': '#paramsProperty'
+          }
+          {
+            'include': '#uiModelProperty'
+          }
+          {
+            'include': '#itemProperty'
+          }
+          {
+            'include': '#principalProperty'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -5278,6 +5308,9 @@
           }
           {
             'include': '#onSelect'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
@@ -5532,6 +5565,71 @@
         'name': 'constant'
     'name': 'minTime'
     'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'modelAssign':
+    'begin': '([ \\t]*model)(?:\\.[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*([ \\t]+=)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'support.type'
+      '3':
+        'name': 'support.type'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'constant'
+    'name': 'modelAssign'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#eventProperty'
+          }
+          {
+            'include': '#successProperty'
+          }
+          {
+            'include': '#selectedProperty'
+          }
+          {
+            'include': '#empty'
+          }
+          {
+            'include': '#ignore'
+          }
+          {
+            'include': '#constant'
+          }
+          {
+            'include': '#paramsProperty'
+          }
+          {
+            'include': '#uiModelProperty'
+          }
+          {
+            'include': '#itemProperty'
+          }
+          {
+            'include': '#principalProperty'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -6560,6 +6658,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -6745,6 +6846,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -6776,6 +6880,9 @@
           }
           {
             'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6831,6 +6938,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -6862,6 +6972,9 @@
           }
           {
             'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6919,6 +7032,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -6952,6 +7068,9 @@
             'include': '#callEndpoint'
           }
           {
+            'include': '#modelAssign'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -6964,6 +7083,101 @@
       }
     ]
     'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+
+  'onInit':
+    'begin': '([ \\t]*on)([ \\t]+init)(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'comment'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'object'
+    'name': 'onInit'
+    'patterns':[
+      {
+        'include': '#goToPage'
+      }
+      {
+        'include': '#fireEvent'
+      }
+      {
+        'include': '#close'
+      }
+      {
+        'include': '#reload'
+      }
+      {
+        'include': '#replace'
+      }
+      {
+        'include': '#open'
+      }
+      {
+        'include': '#show'
+      }
+      {
+        'include': '#hide'
+      }
+      {
+        'include': '#callEndpoint'
+      }
+      {
+        'include': '#modelAssign'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#goToPage'
+          }
+          {
+            'include': '#fireEvent'
+          }
+          {
+            'include': '#close'
+          }
+          {
+            'include': '#reload'
+          }
+          {
+            'include': '#replace'
+          }
+          {
+            'include': '#open'
+          }
+          {
+            'include': '#show'
+          }
+          {
+            'include': '#hide'
+          }
+          {
+            'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoad':
     'begin': '([ \\t]*on)([ \\t]+load)([ \\t]*\\n)?'
@@ -7005,6 +7219,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -7036,6 +7253,9 @@
           }
           {
             'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7091,6 +7311,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -7122,6 +7345,9 @@
           }
           {
             'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7177,6 +7403,9 @@
         'include': '#callEndpoint'
       }
       {
+        'include': '#modelAssign'
+      }
+      {
         'begin': '\\('
         'patterns': [
           {
@@ -7208,6 +7437,9 @@
           }
           {
             'include': '#callEndpoint'
+          }
+          {
+            'include': '#modelAssign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10064,6 +10296,9 @@
             'include': '#onSelect'
           }
           {
+            'include': '#onInit'
+          }
+          {
             'include': '#onEvent'
           }
           {
@@ -10246,7 +10481,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10281,7 +10516,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10348,7 +10583,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10399,7 +10634,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10450,7 +10685,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#scale'
@@ -10489,11 +10724,30 @@
             'include': '#hidden'
           }
           {
+            'include': '#input'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
         'end': '\\]'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#onClick'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10537,7 +10791,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10588,7 +10842,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10621,11 +10875,30 @@
             'include': '#hidden'
           }
           {
+            'include': '#input'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
         'end': '\\]'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#onClick'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10660,7 +10933,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10711,7 +10984,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10746,7 +11019,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10781,7 +11054,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10848,7 +11121,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10902,7 +11175,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10953,7 +11226,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10992,7 +11265,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -11036,7 +11309,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -11087,6 +11360,9 @@
           }
           {
             'include': '#onSelect'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
@@ -11149,7 +11425,7 @@
             'include': '#hidden'
           }
           {
-            'include': '#bind'
+            'include': '#input'
           }
           {
             'include': '#path'
@@ -11592,6 +11868,9 @@
           }
           {
             'include': '#onLoad'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
