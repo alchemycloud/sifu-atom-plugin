@@ -123,6 +123,26 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'assign':
+    'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)([ \\t]+=)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
+    'beginCaptures':
+      '1':
+        'name': 'support.type'
+      '2':
+        'name': 'support.type'
+      '3':
+        'name': 'keyword'
+      '4':
+        'name': 'constant'
+    'name': 'assign'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'binaryCondition':
     'begin': '(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
     'beginCaptures':
@@ -360,7 +380,7 @@
     'name': 'clientTemplate'
     'patterns':[
       {
-        'begin': '\\['
+        'begin': '\\('
         'patterns': [
           {
             'include': '#comments'
@@ -373,7 +393,7 @@
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\]'
+        'end': '\\)'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -5572,71 +5592,6 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
-  'modelAssign':
-    'begin': '([ \\t]*model)(?:\\.[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*([ \\t]+=)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-      '4':
-        'name': 'keyword'
-      '5':
-        'name': 'constant'
-    'name': 'modelAssign'
-    'patterns':[
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#eventProperty'
-          }
-          {
-            'include': '#successProperty'
-          }
-          {
-            'include': '#selectedProperty'
-          }
-          {
-            'include': '#empty'
-          }
-          {
-            'include': '#ignore'
-          }
-          {
-            'include': '#constant'
-          }
-          {
-            'include': '#paramsProperty'
-          }
-          {
-            'include': '#uiModelProperty'
-          }
-          {
-            'include': '#itemProperty'
-          }
-          {
-            'include': '#principalProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
   'modelDtoSetting':
     'begin': '([ \\t]*model)'
     'beginCaptures':
@@ -6807,7 +6762,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClick':
-    'begin': '([ \\t]*on)([ \\t]+click)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)([ \\t]+click)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6846,7 +6801,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -6882,7 +6837,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6896,10 +6851,10 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onClose':
-    'begin': '([ \\t]*on)([ \\t]+close)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)([ \\t]+close)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -6938,7 +6893,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -6974,7 +6929,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6988,10 +6943,10 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onEvent':
-    'begin': '([ \\t]*on)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7032,7 +6987,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -7068,7 +7023,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7082,7 +7037,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onInit':
     'begin': '([ \\t]*on)([ \\t]+init)(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?'
@@ -7127,7 +7082,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -7163,7 +7118,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7180,7 +7135,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onLoad':
-    'begin': '([ \\t]*on)([ \\t]+load)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)([ \\t]+load)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7219,7 +7174,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -7255,7 +7210,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7269,10 +7224,10 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSelect':
-    'begin': '([ \\t]*on)([ \\t]+select)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)([ \\t]+select)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7311,7 +7266,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -7347,7 +7302,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7361,10 +7316,10 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onSuccess':
-    'begin': '([ \\t]*on)([ \\t]+success)([ \\t]*\\n)?'
+    'begin': '([ \\t]*on)([ \\t]+success)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -7403,7 +7358,7 @@
         'include': '#callEndpoint'
       }
       {
-        'include': '#modelAssign'
+        'include': '#assign'
       }
       {
         'begin': '\\('
@@ -7439,7 +7394,7 @@
             'include': '#callEndpoint'
           }
           {
-            'include': '#modelAssign'
+            'include': '#assign'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7453,7 +7408,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'open':
     'begin': '([ \\t]*open)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
@@ -8450,7 +8405,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryDelete':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+delete)([ \\t]*\\n)?'
@@ -8478,7 +8433,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryFind':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+find)([ \\t]*\\n)?'
@@ -8530,7 +8485,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryGet':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+get)([ \\t]*\\n)?'
@@ -8558,7 +8513,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineCount':
     'begin': '([ \\t]*count)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
@@ -8594,7 +8549,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineDelete':
     'begin': '([ \\t]*delete)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
@@ -8630,7 +8585,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineFind':
     'begin': '([ \\t]*from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*object))*([ \\t]*\\n)?'
@@ -8692,7 +8647,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineGet':
     'begin': '([ \\t]*get)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
@@ -8728,7 +8683,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineSelect':
     'begin': '([ \\t]*select)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
@@ -8788,7 +8743,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'querySelect':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+select)([ \\t]*\\n)?'
@@ -8840,7 +8795,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from )(?![ \\t]*as )(?![ \\t]*goto )(?![ \\t]*call )(?![ \\t]*open )(?![ \\t]*reload )(?![ \\t]*fire )(?![ \\t]*(left[ \\t]+)?*join )(?![ \\t]*where )(?![ \\t]*if )(?![ \\t]*drop )(?![ \\t]*take )(?![ \\t]*order )(?![ \\t]*orderable )|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'readEndpoint':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+read)'
