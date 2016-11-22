@@ -82,12 +82,12 @@ module.exports =
           filePath: textEditor.getPath()   # Full path to file
           range: [[lineNum, 0], [lineNum, 0]] # Set range-beginnings
 
-      match3 = line.match /.*\[ERROR\](.*)/
+      match3 = line.match /.*\[ERROR\][^ ]*Unknown(.*)/
       if !!match3
         mess = match3[1]
         errors.push
           type: "error"
-          text: mess.replace /\[\d+m/g, ''
+          text: 'Unknown internal error occurred.', ''
           filePath: textEditor.getPath()   # Full path to file
           range: [[0, 0], [0, 0]] # Set range-beginnings
 
