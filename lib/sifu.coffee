@@ -82,6 +82,15 @@ module.exports =
           filePath: textEditor.getPath()   # Full path to file
           range: [[lineNum, 0], [lineNum, 0]] # Set range-beginnings
 
+      match3 = line.match /.*\[ERROR\](.*)/
+      if !!match3
+        mess = match3[1]
+        errors.push
+          type: "error"
+          text: mess.replace /\[\d+m/g, ''
+          filePath: textEditor.getPath()   # Full path to file
+          range: [[0, 0], [0, 0]] # Set range-beginnings
+
     @_log 'returning', errors.length, 'linter-messages.'
 
     if (errors.length == 0)
