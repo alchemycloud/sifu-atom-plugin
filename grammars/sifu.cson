@@ -7040,20 +7040,17 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'onInit':
-    'begin': '([ \\t]*on)([ \\t]+init)(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?'
+    'begin': '([ \\t]*on)([ \\t]+init)'
     'beginCaptures':
       '1':
         'name': 'keyword'
       '2':
         'name': 'keyword'
-      '3':
-        'name': 'comment'
-      '4':
-        'name': 'keyword'
-      '5':
-        'name': 'object'
     'name': 'onInit'
     'patterns':[
+      {
+        'include': '#if'
+      }
       {
         'include': '#goToPage'
       }
