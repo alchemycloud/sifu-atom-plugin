@@ -197,9 +197,6 @@
             'include': '#successProperty'
           }
           {
-            'include': '#selectedProperty'
-          }
-          {
             'include': '#empty'
           }
           {
@@ -420,9 +417,6 @@
           }
           {
             'include': '#successProperty'
-          }
-          {
-            'include': '#selectedProperty'
           }
           {
             'include': '#empty'
@@ -3458,9 +3452,6 @@
             'include': '#successProperty'
           }
           {
-            'include': '#selectedProperty'
-          }
-          {
             'include': '#empty'
           }
           {
@@ -3680,9 +3671,6 @@
           }
           {
             'include': '#successProperty'
-          }
-          {
-            'include': '#selectedProperty'
           }
           {
             'include': '#empty'
@@ -7431,9 +7419,6 @@
             'include': '#successProperty'
           }
           {
-            'include': '#selectedProperty'
-          }
-          {
             'include': '#empty'
           }
           {
@@ -8895,9 +8880,6 @@
             'include': '#successProperty'
           }
           {
-            'include': '#selectedProperty'
-          }
-          {
             'include': '#empty'
           }
           {
@@ -8956,9 +8938,6 @@
           }
           {
             'include': '#successProperty'
-          }
-          {
-            'include': '#selectedProperty'
           }
           {
             'include': '#empty'
@@ -9623,24 +9602,6 @@
         ]
         'end': '\\)'
       }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'selectedProperty':
-    'begin': '([ \\t]*selected)(?:\\.[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-    'name': 'selectedProperty'
-    'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
