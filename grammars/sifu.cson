@@ -535,6 +535,12 @@
             'include': '#params'
           }
           {
+            'include': '#loadEndpointSetting'
+          }
+          {
+            'include': '#modelDtoSetting'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -7589,6 +7595,12 @@
           }
           {
             'include': '#params'
+          }
+          {
+            'include': '#loadEndpointSetting'
+          }
+          {
+            'include': '#modelDtoSetting'
           }
           {
             'include': '#secured'
