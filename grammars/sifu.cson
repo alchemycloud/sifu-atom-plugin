@@ -11484,6 +11484,31 @@
         'end': '\\)'
       }
       {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#onLoad'
+          }
+          {
+            'include': '#onInit'
+          }
+          {
+            'include': '#onEvent'
+          }
+          {
+            'include': '#onClose'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
+      }
+      {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
       }
