@@ -541,6 +541,9 @@
             'include': '#modelDtoSetting'
           }
           {
+            'include': '#visible'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -640,6 +643,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#onLoad'
           }
           {
             'include': '#onInit'
@@ -7603,6 +7609,9 @@
             'include': '#modelDtoSetting'
           }
           {
+            'include': '#visible'
+          }
+          {
             'include': '#secured'
           }
           {
@@ -7708,6 +7717,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#onLoad'
+          }
+          {
+            'include': '#onInit'
           }
           {
             'include': '#onEvent'
@@ -11360,6 +11375,15 @@
           }
           {
             'include': '#secured'
+          }
+          {
+            'include': '#loadEndpointSetting'
+          }
+          {
+            'include': '#modelDtoSetting'
+          }
+          {
+            'include': '#visible'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
