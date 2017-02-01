@@ -1460,6 +1460,9 @@
             'include': '#regex'
           }
           {
+            'include': '#email'
+          }
+          {
             'include': '#crudVisible'
           }
           {
@@ -1602,6 +1605,9 @@
           }
           {
             'include': '#regex'
+          }
+          {
+            'include': '#email'
           }
           {
             'include': '#crudVisible'
@@ -2758,6 +2764,9 @@
             'include': '#regex'
           }
           {
+            'include': '#email'
+          }
+          {
             'include': '#defaultText'
           }
           {
@@ -2900,6 +2909,9 @@
             'include': '#regex'
           }
           {
+            'include': '#email'
+          }
+          {
             'include': '#defaultAny'
           }
           {
@@ -2981,6 +2993,20 @@
       '3':
         'name': 'support.type'
     'name': 'dtoSetting'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'email':
+    'begin': '([ \\t]*email)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'email'
     'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6217,6 +6243,9 @@
           }
           {
             'include': '#regex'
+          }
+          {
+            'include': '#email'
           }
           {
             'include': '#sensitive'
@@ -11104,6 +11133,9 @@
           }
           {
             'include': '#regex'
+          }
+          {
+            'include': '#email'
           }
           {
             'include': '#sensitive'
