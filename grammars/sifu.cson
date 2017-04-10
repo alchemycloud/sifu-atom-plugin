@@ -453,6 +453,99 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'confirm':
+    'begin': '([ \\t]*confirm)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'confirm'
+    'patterns':[
+      {
+        'include': '#confirm'
+      }
+      {
+        'include': '#goToPage'
+      }
+      {
+        'include': '#fireEvent'
+      }
+      {
+        'include': '#close'
+      }
+      {
+        'include': '#reload'
+      }
+      {
+        'include': '#replace'
+      }
+      {
+        'include': '#open'
+      }
+      {
+        'include': '#show'
+      }
+      {
+        'include': '#hide'
+      }
+      {
+        'include': '#callEndpoint'
+      }
+      {
+        'include': '#assign'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#confirm'
+          }
+          {
+            'include': '#goToPage'
+          }
+          {
+            'include': '#fireEvent'
+          }
+          {
+            'include': '#close'
+          }
+          {
+            'include': '#reload'
+          }
+          {
+            'include': '#replace'
+          }
+          {
+            'include': '#open'
+          }
+          {
+            'include': '#show'
+          }
+          {
+            'include': '#hide'
+          }
+          {
+            'include': '#callEndpoint'
+          }
+          {
+            'include': '#assign'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'connectedToEndpoint':
     'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
@@ -6803,6 +6896,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -6837,6 +6933,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -6895,6 +6994,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -6929,6 +7031,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -6989,6 +7094,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -7023,6 +7131,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -7081,6 +7192,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -7115,6 +7229,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -7173,6 +7290,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -7207,6 +7327,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -7265,6 +7388,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -7299,6 +7425,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -7357,6 +7486,9 @@
         'include': '#if'
       }
       {
+        'include': '#confirm'
+      }
+      {
         'include': '#goToPage'
       }
       {
@@ -7391,6 +7523,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#confirm'
           }
           {
             'include': '#goToPage'
@@ -7603,6 +7738,36 @@
         'name': 'support.type'
     'name': 'orderableByProperty'
     'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'orderable':
+    'begin': '([ \\t]*visible)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'orderable'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#pathElement'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -10156,6 +10321,9 @@
           }
           {
             'include': '#visible'
+          }
+          {
+            'include': '#orderable'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
