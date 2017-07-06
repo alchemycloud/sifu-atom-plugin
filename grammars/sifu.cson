@@ -143,6 +143,20 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'auditable':
+    'begin': '([ \\t]*auditable)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'auditable'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'binaryCondition':
     'begin': '(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
     'beginCaptures':
@@ -5803,7 +5817,7 @@
             'include': '#modelType'
           }
           {
-            'include': '#tracked'
+            'include': '#auditable'
           }
           {
             'include': '#publish'
@@ -8525,7 +8539,7 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'propertyTracked':
-    'begin': '([ \\t]*tracked)'
+    'begin': '([ \\t]*auditable)'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -10549,20 +10563,6 @@
       '2':
         'name': 'constant'
     'name': 'testText'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'tracked':
-    'begin': '([ \\t]*tracked)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'tracked'
     'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
