@@ -4052,6 +4052,15 @@
             'include': '#params'
           }
           {
+            'include': '#loadEndpointSetting'
+          }
+          {
+            'include': '#modelDtoSetting'
+          }
+          {
+            'include': '#visible'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
