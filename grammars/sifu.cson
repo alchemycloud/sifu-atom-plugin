@@ -802,6 +802,18 @@
             'include': '#queryInlineCount'
           }
           {
+            'include': '#requestInlineDto'
+          }
+          {
+            'include': '#requestDto'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
+          }
+          {
             'include': '#secured'
           }
           {
@@ -861,10 +873,10 @@
             'include': '#responseDto'
           }
           {
-            'include': '#stub'
+            'include': '#responseMapped'
           }
           {
-            'include': '#responseMapped'
+            'include': '#stub'
           }
           {
             'include': '#secured'
@@ -2098,10 +2110,22 @@
             'include': '#endpointQueryCount'
           }
           {
+            'include': '#queryInlineDelete'
+          }
+          {
             'include': '#endpointQueryDelete'
           }
           {
-            'include': '#queryInlineDelete'
+            'include': '#requestInlineDto'
+          }
+          {
+            'include': '#requestDto'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
           }
           {
             'include': '#responseMapped'
@@ -3543,6 +3567,18 @@
           }
           {
             'include': '#queryInlineFind'
+          }
+          {
+            'include': '#requestInlineDto'
+          }
+          {
+            'include': '#requestDto'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
           }
           {
             'include': '#responseMapped'
@@ -7992,6 +8028,18 @@
             'include': '#endpointQueryCount'
           }
           {
+            'include': '#requestInlineDto'
+          }
+          {
+            'include': '#requestDto'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
+          }
+          {
             'include': '#responseMapped'
           }
           {
@@ -9051,13 +9099,25 @@
             'include': '#queryInlineGet'
           }
           {
-            'include': '#responseMapped'
-          }
-          {
             'include': '#queryInlineSelect'
           }
           {
             'include': '#endpointQuerySelect'
+          }
+          {
+            'include': '#requestInlineDto'
+          }
+          {
+            'include': '#requestDto'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
+          }
+          {
+            'include': '#responseMapped'
           }
           {
             'include': '#secured'
@@ -11790,10 +11850,10 @@
             'include': '#responseDto'
           }
           {
-            'include': '#stub'
+            'include': '#responseMapped'
           }
           {
-            'include': '#responseMapped'
+            'include': '#stub'
           }
           {
             'include': '#secured'
