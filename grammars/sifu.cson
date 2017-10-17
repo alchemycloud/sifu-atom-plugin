@@ -124,15 +124,21 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'assign':
-    'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)([ \\t]+=)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)([ \\t]+=)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
     'beginCaptures':
       '1':
-        'name': 'support.type'
+        'name': 'comment'
       '2':
-        'name': 'support.type'
-      '3':
         'name': 'keyword'
+      '3':
+        'name': 'object'
       '4':
+        'name': 'support.type'
+      '5':
+        'name': 'support.type'
+      '6':
+        'name': 'keyword'
+      '7':
         'name': 'constant'
     'name': 'assign'
     'patterns':[
@@ -188,13 +194,19 @@
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
 
   'callEndpoint':
-    'begin': '([ \\t]*call)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+call)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'comment'
       '2':
-        'name': 'support.type'
+        'name': 'keyword'
       '3':
+        'name': 'object'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'support.type'
+      '6':
         'name': 'support.type'
     'name': 'callEndpoint'
     'patterns':[
@@ -414,9 +426,15 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'close':
-    'begin': '([ \\t]*close)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+close)'
     'beginCaptures':
       '1':
+        'name': 'comment'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'object'
+      '4':
         'name': 'keyword'
     'name': 'close'
     'patterns':[
@@ -468,9 +486,15 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'confirm':
-    'begin': '([ \\t]*confirm)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+confirm)'
     'beginCaptures':
       '1':
+        'name': 'comment'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'object'
+      '4':
         'name': 'keyword'
     'name': 'confirm'
     'patterns':[
@@ -3610,13 +3634,19 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'fireEvent':
-    'begin': '([ \\t]*fire)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+fire)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'comment'
       '2':
-        'name': 'support.type'
+        'name': 'keyword'
       '3':
+        'name': 'object'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'support.type'
+      '6':
         'name': 'support.type'
     'name': 'fireEvent'
     'patterns':[
@@ -3831,13 +3861,19 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'goToPage':
-    'begin': '([ \\t]*goto)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+goto)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'comment'
       '2':
-        'name': 'support.type'
+        'name': 'keyword'
       '3':
+        'name': 'object'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'support.type'
+      '6':
         'name': 'support.type'
     'name': 'goToPage'
     'patterns':[
@@ -3903,9 +3939,15 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'hide':
-    'begin': '([ \\t]*hide)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+hide)'
     'beginCaptures':
       '1':
+        'name': 'comment'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'object'
+      '4':
         'name': 'keyword'
     'name': 'hide'
     'patterns':[
@@ -7631,13 +7673,19 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'open':
-    'begin': '([ \\t]*open)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+open)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'comment'
       '2':
-        'name': 'support.type'
+        'name': 'keyword'
       '3':
+        'name': 'object'
+      '4':
+        'name': 'keyword'
+      '5':
+        'name': 'support.type'
+      '6':
         'name': 'support.type'
     'name': 'open'
     'patterns':[
@@ -9165,9 +9213,15 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'reload':
-    'begin': '([ \\t]*reload)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+reload)'
     'beginCaptures':
       '1':
+        'name': 'comment'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'object'
+      '4':
         'name': 'keyword'
     'name': 'reload'
     'patterns':[
@@ -9219,15 +9273,21 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'replace':
-    'begin': '([ \\t]*replace)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+with)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+replace)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+with)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'comment'
       '2':
-        'name': 'punctuation.definition.identity'
-      '3':
         'name': 'keyword'
+      '3':
+        'name': 'object'
       '4':
+        'name': 'keyword'
+      '5':
+        'name': 'punctuation.definition.identity'
+      '6':
+        'name': 'keyword'
+      '7':
         'name': 'punctuation.definition.identity'
     'name': 'replace'
     'patterns':[
@@ -10281,9 +10341,15 @@
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'show':
-    'begin': '([ \\t]*show)'
+    'begin': '(?:[ \\t]*(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*if)[ \\t]+([ \\t]*object))?([ \\t]+show)'
     'beginCaptures':
       '1':
+        'name': 'comment'
+      '2':
+        'name': 'keyword'
+      '3':
+        'name': 'object'
+      '4':
         'name': 'keyword'
     'name': 'show'
     'patterns':[
