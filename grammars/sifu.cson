@@ -6994,6 +6994,9 @@
             'include': '#comments'
           }
           {
+            'include': '#if'
+          }
+          {
             'include': '#confirm'
           }
           {
@@ -7090,6 +7093,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#if'
           }
           {
             'include': '#confirm'
@@ -7192,6 +7198,9 @@
             'include': '#comments'
           }
           {
+            'include': '#if'
+          }
+          {
             'include': '#confirm'
           }
           {
@@ -7288,6 +7297,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#if'
           }
           {
             'include': '#confirm'
@@ -7388,6 +7400,9 @@
             'include': '#comments'
           }
           {
+            'include': '#if'
+          }
+          {
             'include': '#confirm'
           }
           {
@@ -7486,6 +7501,9 @@
             'include': '#comments'
           }
           {
+            'include': '#if'
+          }
+          {
             'include': '#confirm'
           }
           {
@@ -7582,6 +7600,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#if'
           }
           {
             'include': '#confirm'
@@ -7797,36 +7818,6 @@
         'name': 'support.type'
     'name': 'orderableByProperty'
     'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'orderable':
-    'begin': '([ \\t]*visible)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'orderable'
-    'patterns':[
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#pathElement'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -10404,9 +10395,6 @@
           }
           {
             'include': '#visible'
-          }
-          {
-            'include': '#orderable'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
