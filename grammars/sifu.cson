@@ -110,6 +110,9 @@
             'include': '#crudEndpoint'
           }
           {
+            'include': '#unidentifiedApiElement'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -7825,6 +7828,36 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'orderable':
+    'begin': '([ \\t]*visible)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'orderable'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#pathElement'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'page':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+page)'
     'beginCaptures':
@@ -10397,6 +10430,9 @@
             'include': '#visible'
           }
           {
+            'include': '#orderable'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -11602,6 +11638,87 @@
         'name': 'markup.inserted'
     'name': 'unaryCondition'
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
+
+  'unidentifiedApiElement':
+    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.identity'
+      '2':
+        'name': 'punctuation.definition.identity'
+    'name': 'unidentifiedApiElement'
+    'patterns':[
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#modelSetting'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\]'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#dtoPropertyInt'
+          }
+          {
+            'include': '#dtoPropertyText'
+          }
+          {
+            'include': '#dtoPropertyBoolean'
+          }
+          {
+            'include': '#dtoPropertyDecimal'
+          }
+          {
+            'include': '#dtoPropertyDateTime'
+          }
+          {
+            'include': '#dtoPropertyDate'
+          }
+          {
+            'include': '#dtoPropertyTime'
+          }
+          {
+            'include': '#dtoPropertyUUID'
+          }
+          {
+            'include': '#dtoPropertyBytes'
+          }
+          {
+            'include': '#dtoPropertyInlineEnum'
+          }
+          {
+            'include': '#dtoPropertyDtoInline'
+          }
+          {
+            'include': '#dtoPropertyUnidentified'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'unidentifiedComponent':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+[a-zA-Z][_a-zA-Z0-9]*)'
