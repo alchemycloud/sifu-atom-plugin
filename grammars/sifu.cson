@@ -8438,6 +8438,9 @@
             'include': '#url'
           }
           {
+            'include': '#projectVersion'
+          }
+          {
             'include': '#namespace'
           }
           {
@@ -8466,6 +8469,22 @@
         ]
         'end': '\\)'
       }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'projectVersion':
+    'begin': '([ \\t]*version)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'constant'
+    'name': 'projectVersion'
+    'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
