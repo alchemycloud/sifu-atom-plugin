@@ -86,13 +86,7 @@
             'include': '#customEndpoint'
           }
           {
-            'include': '#findEndpoint'
-          }
-          {
             'include': '#readEndpoint'
-          }
-          {
-            'include': '#pagedEndpoint'
           }
           {
             'include': '#createEndpoint'
@@ -394,7 +388,7 @@
     'name': 'clientTemplate'
     'patterns':[
       {
-        'begin': '\\('
+        'begin': '\\['
         'patterns': [
           {
             'include': '#comments'
@@ -407,7 +401,7 @@
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\]'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -811,12 +805,6 @@
             'include': '#requestDto'
           }
           {
-            'include': '#responseInlineDto'
-          }
-          {
-            'include': '#responseDto'
-          }
-          {
             'include': '#secured'
           }
           {
@@ -858,10 +846,10 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQueryFind'
+            'include': '#modelSetting'
           }
           {
-            'include': '#modelSetting'
+            'include': '#endpointQuerySelect'
           }
           {
             'include': '#requestInlineDto'
@@ -1879,9 +1867,6 @@
             'include': '#responseDto'
           }
           {
-            'include': '#responseMapped'
-          }
-          {
             'include': '#secured'
           }
           {
@@ -1895,6 +1880,9 @@
           }
           {
             'include': '#version'
+          }
+          {
+            'include': '#paged'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -2101,22 +2089,10 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQueryFind'
+            'include': '#endpointQuerySelect'
           }
           {
-            'include': '#queryInlineFind'
-          }
-          {
-            'include': '#queryInlineCount'
-          }
-          {
-            'include': '#endpointQueryCount'
-          }
-          {
-            'include': '#queryInlineDelete'
-          }
-          {
-            'include': '#endpointQueryDelete'
+            'include': '#endpointQueryInlineSelect'
           }
           {
             'include': '#requestInlineDto'
@@ -3276,41 +3252,64 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
-  'endpointQueryDelete':
-    'begin': '([ \\t]*query)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+  'endpointQueryInlineSelect':
+    'begin': '(?=[ \\t]*select)([ \\t]*\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-    'name': 'endpointQueryDelete'
+    'name': 'endpointQueryInlineSelect'
     'patterns':[
+      {
+        'include': '#select'
+      }
+      {
+        'include': '#opt_from'
+      }
+      {
+        'include': '#opt_as'
+      }
+      {
+        'include': '#join'
+      }
+      {
+        'include': '#dropConstant'
+      }
+      {
+        'include': '#dropVariable'
+      }
+      {
+        'include': '#takeConstant'
+      }
+      {
+        'include': '#takeVariable'
+      }
+      {
+        'include': '#orderByOrderByProperty'
+      }
+      {
+        'include': '#orderBy'
+      }
+      {
+        'include': '#orderableByQueryProperty'
+      }
+      {
+        'include': '#orderableBy'
+      }
+      {
+        'include': '#groupByQueryProperty'
+      }
+      {
+        'include': '#groupBy'
+      }
+      {
+        'include': '#where'
+      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'endpointQueryFind':
-    'begin': '([ \\t]*query)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-    'name': 'endpointQueryFind'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*group)(?![ \\t]*select)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'endpointQuerySelect':
     'begin': '([ \\t]*query)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
@@ -3477,6 +3476,12 @@
             'include': '#dtoPropertyBytes'
           }
           {
+            'include': '#dtoPropertyInlineEnum'
+          }
+          {
+            'include': '#dtoPropertyDtoInline'
+          }
+          {
             'include': '#dtoPropertyUnidentified'
           }
           {
@@ -3540,71 +3545,6 @@
         'name': 'markup.inserted'
     'name': 'fileStorage'
     'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'findEndpoint':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+find)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'keyword'
-    'name': 'findEndpoint'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#restSimple'
-          }
-          {
-            'include': '#endpointQueryFind'
-          }
-          {
-            'include': '#queryInlineFind'
-          }
-          {
-            'include': '#requestInlineDto'
-          }
-          {
-            'include': '#requestDto'
-          }
-          {
-            'include': '#responseInlineDto'
-          }
-          {
-            'include': '#responseDto'
-          }
-          {
-            'include': '#responseMapped'
-          }
-          {
-            'include': '#secured'
-          }
-          {
-            'include': '#public'
-          }
-          {
-            'include': '#endpointErrors'
-          }
-          {
-            'include': '#version'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -3890,6 +3830,44 @@
       }
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'groupBy':
+    'begin': '([ \\t]*group by)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'groupBy'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#queryProperty'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+    ]
+    'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
+
+  'groupByQueryProperty':
+    'begin': '([ \\t]*group by)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'support.type'
+      '3':
+        'name': 'support.type'
+    'name': 'groupByQueryProperty'
+    'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
 
   'hidden':
     'begin': '([ \\t]*hidden)'
@@ -4601,6 +4579,9 @@
             'include': '#visible'
           }
           {
+            'include': '#sortable'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -4938,6 +4919,9 @@
             'include': '#visible'
           }
           {
+            'include': '#sortable'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -5103,6 +5087,9 @@
           }
           {
             'include': '#visible'
+          }
+          {
+            'include': '#sortable'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -5402,6 +5389,9 @@
           }
           {
             'include': '#visible'
+          }
+          {
+            'include': '#sortable'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -5830,6 +5820,12 @@
             'include': '#dtoPropertyBytes'
           }
           {
+            'include': '#dtoPropertyInlineEnum'
+          }
+          {
+            'include': '#dtoPropertyDtoInline'
+          }
+          {
             'include': '#dtoPropertyUnidentified'
           }
           {
@@ -5893,19 +5889,13 @@
             'include': '#comments'
           }
           {
-            'include': '#queryFind'
+            'include': '#querySelect'
           }
           {
             'include': '#queryCount'
           }
           {
-            'include': '#queryGet'
-          }
-          {
             'include': '#queryDelete'
-          }
-          {
-            'include': '#querySelect'
           }
           {
             'include': '#modelPropertyInt'
@@ -7788,7 +7778,7 @@
             'include': '#comments'
           }
           {
-            'include': '#orderableByProperty'
+            'include': '#queryProperty'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7800,7 +7790,7 @@
     ]
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
 
-  'orderableByOrderableByProperty':
+  'orderableByQueryProperty':
     'begin': '([ \\t]*orderable by)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
@@ -7809,54 +7799,8 @@
         'name': 'support.type'
       '3':
         'name': 'support.type'
-    'name': 'orderableByOrderableByProperty'
+    'name': 'orderableByQueryProperty'
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
-
-  'orderableByProperty':
-    'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'support.type'
-      '2':
-        'name': 'support.type'
-    'name': 'orderableByProperty'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'orderable':
-    'begin': '([ \\t]*visible)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'orderable'
-    'patterns':[
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#pathElement'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'page':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+page)'
@@ -8021,77 +7965,6 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
-  'pagedEndpoint':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+paged)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'keyword'
-    'name': 'pagedEndpoint'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#restSimple'
-          }
-          {
-            'include': '#endpointQueryFind'
-          }
-          {
-            'include': '#queryInlineFind'
-          }
-          {
-            'include': '#queryInlineCount'
-          }
-          {
-            'include': '#endpointQueryCount'
-          }
-          {
-            'include': '#requestInlineDto'
-          }
-          {
-            'include': '#requestDto'
-          }
-          {
-            'include': '#responseInlineDto'
-          }
-          {
-            'include': '#responseDto'
-          }
-          {
-            'include': '#responseMapped'
-          }
-          {
-            'include': '#secured'
-          }
-          {
-            'include': '#public'
-          }
-          {
-            'include': '#endpointErrors'
-          }
-          {
-            'include': '#version'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
   'paged':
     'begin': '([ \\t]*paged)'
     'beginCaptures':
@@ -8161,6 +8034,12 @@
           }
           {
             'include': '#dtoPropertyBytes'
+          }
+          {
+            'include': '#dtoPropertyInlineEnum'
+          }
+          {
+            'include': '#dtoPropertyDtoInline'
           }
           {
             'include': '#dtoPropertyUnidentified'
@@ -8722,7 +8601,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*group)(?![ \\t]*select)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryDelete':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+delete)([ \\t]*\\n)?'
@@ -8750,90 +8629,10 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-
-  'queryFind':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+find)([ \\t]*\\n)?'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'keyword'
-    'name': 'queryFind'
-    'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#dropConstant'
-      }
-      {
-        'include': '#dropVariable'
-      }
-      {
-        'include': '#takeConstant'
-      }
-      {
-        'include': '#takeVariable'
-      }
-      {
-        'include': '#orderByOrderByProperty'
-      }
-      {
-        'include': '#orderBy'
-      }
-      {
-        'include': '#orderableByOrderableByProperty'
-      }
-      {
-        'include': '#orderableBy'
-      }
-      {
-        'include': '#where'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-
-  'queryGet':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+get)([ \\t]*\\n)?'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'keyword'
-    'name': 'queryGet'
-    'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#where'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*group)(?![ \\t]*select)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'queryInlineCount':
-    'begin': '([ \\t]*count)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
+    'begin': '([ \\t]*count)[ \\t]+([ \\t]*from)[ \\t]+[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*object))*([ \\t]*\\n)?'
     'beginCaptures':
       '1':
         'name': 'keyword'
@@ -8847,6 +8646,10 @@
         'name': 'keyword'
       '6':
         'name': 'punctuation.definition.identity'
+      '7':
+        'name': 'comment'
+      '8':
+        'name': 'object'
     'name': 'queryInlineCount'
     'patterns':[
       {
@@ -8866,204 +8669,26 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*group)(?![ \\t]*select)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
-  'queryInlineDelete':
-    'begin': '([ \\t]*delete)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
+  'queryProperty':
+    'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
     'beginCaptures':
       '1':
-        'name': 'keyword'
+        'name': 'support.type'
       '2':
-        'name': 'keyword'
-      '3':
         'name': 'support.type'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'keyword'
-      '6':
-        'name': 'punctuation.definition.identity'
-    'name': 'queryInlineDelete'
+    'name': 'queryProperty'
     'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#where'
-      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-
-  'queryInlineFind':
-    'begin': '([ \\t]*from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?(?:[ \\t]+(?:[ \\t]*(#.*|\\n))?[ \\t]+([ \\t]*object))*([ \\t]*\\n)?'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-      '4':
-        'name': 'keyword'
-      '5':
-        'name': 'punctuation.definition.identity'
-      '6':
-        'name': 'comment'
-      '7':
-        'name': 'object'
-    'name': 'queryInlineFind'
-    'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#dropConstant'
-      }
-      {
-        'include': '#dropVariable'
-      }
-      {
-        'include': '#takeConstant'
-      }
-      {
-        'include': '#takeVariable'
-      }
-      {
-        'include': '#orderByOrderByProperty'
-      }
-      {
-        'include': '#orderBy'
-      }
-      {
-        'include': '#orderableByOrderableByProperty'
-      }
-      {
-        'include': '#orderableBy'
-      }
-      {
-        'include': '#where'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-
-  'queryInlineGet':
-    'begin': '([ \\t]*get)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'keyword'
-      '3':
-        'name': 'support.type'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'keyword'
-      '6':
-        'name': 'punctuation.definition.identity'
-    'name': 'queryInlineGet'
-    'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#where'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-
-  'queryInlineSelect':
-    'begin': '([ \\t]*select)([ \\t]+from)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)(?:[ \\t]+([ \\t]*as)[ \\t]+([ \\t]*[a-zA-Z][_a-zA-Z0-9]*))?([ \\t]*\\n)?'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'keyword'
-      '3':
-        'name': 'support.type'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'keyword'
-      '6':
-        'name': 'punctuation.definition.identity'
-    'name': 'queryInlineSelect'
-    'patterns':[
-      {
-        'include': '#opt_from'
-      }
-      {
-        'include': '#opt_as'
-      }
-      {
-        'include': '#join'
-      }
-      {
-        'include': '#dropConstant'
-      }
-      {
-        'include': '#dropVariable'
-      }
-      {
-        'include': '#takeConstant'
-      }
-      {
-        'include': '#takeVariable'
-      }
-      {
-        'include': '#orderByOrderByProperty'
-      }
-      {
-        'include': '#orderBy'
-      }
-      {
-        'include': '#orderableByOrderableByProperty'
-      }
-      {
-        'include': '#orderableBy'
-      }
-      {
-        'include': '#where'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
   'querySelect':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+select)([ \\t]*\\n)?'
+    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?=[ \\t]+select)([ \\t]*\\n)?'
     'beginCaptures':
       '1':
         'name': 'punctuation.definition.identity'
@@ -9078,6 +8703,9 @@
         'include': '#opt_as'
       }
       {
+        'include': '#select'
+      }
+      {
         'include': '#join'
       }
       {
@@ -9099,10 +8727,16 @@
         'include': '#orderBy'
       }
       {
-        'include': '#orderableByOrderableByProperty'
+        'include': '#orderableByQueryProperty'
       }
       {
         'include': '#orderableBy'
+      }
+      {
+        'include': '#groupByQueryProperty'
+      }
+      {
+        'include': '#groupBy'
       }
       {
         'include': '#where'
@@ -9112,7 +8746,7 @@
         'name': 'invalid.illegal'
       }
     ]
-    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+    'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*from)(?![ \\t]*as)(?![ \\t]*goto)(?![ \\t]*call)(?![ \\t]*close)(?![ \\t]*init)(?![ \\t]*open)(?![ \\t]*reload)(?![ \\t]*fire)(?![ \\t]*(left[ \\t]+)?*join)(?![ \\t]*where)(?![ \\t]*if )(?![ \\t]*drop)(?![ \\t]*take)(?![ \\t]*group)(?![ \\t]*select)(?![ \\t]*order)(?![ \\t]*orderable)|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
 
   'readEndpoint':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+read)'
@@ -9133,19 +8767,19 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQueryFind'
-          }
-          {
-            'include': '#queryInlineFind'
-          }
-          {
-            'include': '#queryInlineGet'
-          }
-          {
-            'include': '#queryInlineSelect'
+            'include': '#modelSetting'
           }
           {
             'include': '#endpointQuerySelect'
+          }
+          {
+            'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#queryInlineCount'
+          }
+          {
+            'include': '#endpointQueryCount'
           }
           {
             'include': '#requestInlineDto'
@@ -9169,13 +8803,13 @@
             'include': '#public'
           }
           {
-            'include': '#paged'
-          }
-          {
             'include': '#endpointErrors'
           }
           {
             'include': '#version'
+          }
+          {
+            'include': '#paged'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -9956,6 +9590,32 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'select':
+    'begin': '([ \\t]*select)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'select'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#queryProperty'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+    ]
+    'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
+
   'sensitive':
     'begin': '([ \\t]*sensitive)'
     'beginCaptures':
@@ -10371,6 +10031,36 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'sortable':
+    'begin': '([ \\t]*sortable)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'sortable'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#pathElement'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'stub':
     'begin': '([ \\t]*stub)'
     'beginCaptures':
@@ -10449,7 +10139,7 @@
             'include': '#visible'
           }
           {
-            'include': '#orderable'
+            'include': '#sortable'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -11779,6 +11469,9 @@
             'include': '#visible'
           }
           {
+            'include': '#sortable'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -11941,25 +11634,13 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQueryFind'
-          }
-          {
             'include': '#modelSetting'
           }
           {
-            'include': '#queryInlineFind'
-          }
-          {
-            'include': '#queryInlineCount'
-          }
-          {
-            'include': '#endpointQueryCount'
-          }
-          {
-            'include': '#queryInlineSelect'
-          }
-          {
             'include': '#endpointQuerySelect'
+          }
+          {
+            'include': '#endpointQueryInlineSelect'
           }
           {
             'include': '#requestInlineDto'
@@ -12363,3 +12044,4 @@
     ]
     'name': 'if'
     'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*\\()(?![ \\t]*and )(?![ \\t]*or )(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+is null)|([ \\t]+is not null)))|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+       
