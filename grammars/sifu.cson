@@ -793,16 +793,34 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQueryCount'
+            'include': '#modelSetting'
+          }
+          {
+            'include': '#stub'
           }
           {
             'include': '#queryInlineCount'
+          }
+          {
+            'include': '#endpointQueryCount'
           }
           {
             'include': '#requestInlineDto'
           }
           {
             'include': '#requestDto'
+          }
+          {
+            'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#endpointQuerySelect'
+          }
+          {
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
           }
           {
             'include': '#secured'
@@ -812,6 +830,9 @@
           }
           {
             'include': '#endpointErrors'
+          }
+          {
+            'include': '#version'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -849,7 +870,7 @@
             'include': '#modelSetting'
           }
           {
-            'include': '#endpointQuerySelect'
+            'include': '#stub'
           }
           {
             'include': '#requestInlineDto'
@@ -858,16 +879,16 @@
             'include': '#requestDto'
           }
           {
+            'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#endpointQuerySelect'
+          }
+          {
             'include': '#responseInlineDto'
           }
           {
             'include': '#responseDto'
-          }
-          {
-            'include': '#responseMapped'
-          }
-          {
-            'include': '#stub'
           }
           {
             'include': '#secured'
@@ -887,58 +908,6 @@
           }
         ]
         'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#crudPropertyInt'
-          }
-          {
-            'include': '#crudPropertyText'
-          }
-          {
-            'include': '#crudPropertyBoolean'
-          }
-          {
-            'include': '#crudPropertyDecimal'
-          }
-          {
-            'include': '#crudPropertyDateTime'
-          }
-          {
-            'include': '#crudPropertyDate'
-          }
-          {
-            'include': '#crudPropertyTime'
-          }
-          {
-            'include': '#crudPropertyUUID'
-          }
-          {
-            'include': '#crudPropertyBytes'
-          }
-          {
-            'include': '#crudPropertyInlineEnum'
-          }
-          {
-            'include': '#crudPropertyInlineDto'
-          }
-          {
-            'include': '#crudPropertyCopy'
-          }
-          {
-            'include': '#crudPropertyUnidentified'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -985,751 +954,6 @@
         'end': '\\]'
       }
       {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#crudPropertyInt'
-          }
-          {
-            'include': '#crudPropertyText'
-          }
-          {
-            'include': '#crudPropertyBoolean'
-          }
-          {
-            'include': '#crudPropertyDecimal'
-          }
-          {
-            'include': '#crudPropertyDateTime'
-          }
-          {
-            'include': '#crudPropertyDate'
-          }
-          {
-            'include': '#crudPropertyTime'
-          }
-          {
-            'include': '#crudPropertyUUID'
-          }
-          {
-            'include': '#crudPropertyBytes'
-          }
-          {
-            'include': '#crudPropertyInlineEnum'
-          }
-          {
-            'include': '#crudPropertyInlineDto'
-          }
-          {
-            'include': '#crudPropertyCopy'
-          }
-          {
-            'include': '#crudPropertyUnidentified'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyBoolean':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+boolean)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyBoolean'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#defaultBoolean'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyBytes':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+bytes)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyBytes'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minNumber'
-          }
-          {
-            'include': '#maxNumber'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyCopy':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*(?:([ \\t]+mandatory))?[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'support.type'
-    'name': 'crudPropertyCopy'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#minAny'
-          }
-          {
-            'include': '#maxAny'
-          }
-          {
-            'include': '#saveValue'
-          }
-          {
-            'include': '#updateValue'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'include': '#scale'
-          }
-          {
-            'include': '#precision'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyDate':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+date)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyDate'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minDate'
-          }
-          {
-            'include': '#maxDate'
-          }
-          {
-            'include': '#defaultDate'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyDateTime':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+datetime)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyDateTime'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minDateTime'
-          }
-          {
-            'include': '#maxDateTime'
-          }
-          {
-            'include': '#defaultDateTime'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyDecimal':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+decimal)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyDecimal'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minDecimal'
-          }
-          {
-            'include': '#maxDecimal'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#defaultDecimal'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'include': '#scale'
-          }
-          {
-            'include': '#precision'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyInlineDto':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+dto)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyInlineDto'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#dtoPropertyInt'
-          }
-          {
-            'include': '#dtoPropertyText'
-          }
-          {
-            'include': '#dtoPropertyBoolean'
-          }
-          {
-            'include': '#dtoPropertyDecimal'
-          }
-          {
-            'include': '#dtoPropertyDateTime'
-          }
-          {
-            'include': '#dtoPropertyDate'
-          }
-          {
-            'include': '#dtoPropertyTime'
-          }
-          {
-            'include': '#dtoPropertyUUID'
-          }
-          {
-            'include': '#dtoPropertyBytes'
-          }
-          {
-            'include': '#dtoPropertyInlineEnum'
-          }
-          {
-            'include': '#dtoPropertyDtoInline'
-          }
-          {
-            'include': '#dtoPropertyUnidentified'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyInlineEnum':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+enum)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyInlineEnum'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#defaultEnum'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#enumValue'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyInt':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+integer)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyInt'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minNumber'
-          }
-          {
-            'include': '#maxNumber'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#defaultNumber'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyText':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+text)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyText'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minNumber'
-          }
-          {
-            'include': '#maxNumber'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#defaultText'
-          }
-          {
-            'include': '#regex'
-          }
-          {
-            'include': '#email'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyTime':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+time)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyTime'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minTime'
-          }
-          {
-            'include': '#maxTime'
-          }
-          {
-            'include': '#defaultTime'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyUUID':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*([ \\t]+bytes)'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'keyword'
-    'name': 'crudPropertyUUID'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudPropertyUnidentified':
-    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)(?:(?:([ \\t]+optional)|([ \\t]+list)))*(?:[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)|[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))'
-    'beginCaptures':
-      '1':
-        'name': 'punctuation.definition.identity'
-      '2':
-        'name': 'markup.inserted'
-      '3':
-        'name': 'markup.inserted'
-      '4':
-        'name': 'support.type'
-      '5':
-        'name': 'support.type'
-      '6':
-        'name': 'support.type'
-      '7':
-        'name': 'support.type'
-    'name': 'crudPropertyUnidentified'
-    'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#minAny'
-          }
-          {
-            'include': '#maxAny'
-          }
-          {
-            'include': '#defaultAny'
-          }
-          {
-            'include': '#sensitive'
-          }
-          {
-            'include': '#regex'
-          }
-          {
-            'include': '#email'
-          }
-          {
-            'include': '#crudVisible'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
       }
@@ -1749,36 +973,6 @@
         'name': 'markup.inserted'
     'name': 'crudTypeElement'
     'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'crudVisible':
-    'begin': '([ \\t]*visible)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'crudVisible'
-    'patterns':[
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#crudTypeElement'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -1855,6 +1049,15 @@
             'include': '#comments'
           }
           {
+            'include': '#modelSetting'
+          }
+          {
+            'include': '#paged'
+          }
+          {
+            'include': '#stub'
+          }
+          {
             'include': '#requestInlineDto'
           }
           {
@@ -1880,9 +1083,6 @@
           }
           {
             'include': '#version'
-          }
-          {
-            'include': '#paged'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -2089,25 +1289,22 @@
             'include': '#restSimple'
           }
           {
-            'include': '#endpointQuerySelect'
+            'include': '#modelSetting'
+          }
+          {
+            'include': '#stub'
           }
           {
             'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#endpointQuerySelect'
           }
           {
             'include': '#requestInlineDto'
           }
           {
             'include': '#requestDto'
-          }
-          {
-            'include': '#responseInlineDto'
-          }
-          {
-            'include': '#responseDto'
-          }
-          {
-            'include': '#responseMapped'
           }
           {
             'include': '#secured'
@@ -2363,22 +1560,6 @@
         'name': 'keyword'
     'name': 'dto'
     'patterns':[
-      {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#modelSetting'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
       {
         'begin': '\\('
         'patterns': [
@@ -2678,9 +1859,6 @@
           }
           {
             'include': '#sensitive'
-          }
-          {
-            'include': '#modelSetting'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -3026,9 +2204,6 @@
           }
           {
             'include': '#sensitive'
-          }
-          {
-            'include': '#modelSetting'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -8770,10 +7945,16 @@
             'include': '#modelSetting'
           }
           {
-            'include': '#endpointQuerySelect'
+            'include': '#paged'
+          }
+          {
+            'include': '#stub'
           }
           {
             'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#endpointQuerySelect'
           }
           {
             'include': '#queryInlineCount'
@@ -8794,9 +7975,6 @@
             'include': '#responseDto'
           }
           {
-            'include': '#responseMapped'
-          }
-          {
             'include': '#secured'
           }
           {
@@ -8807,9 +7985,6 @@
           }
           {
             'include': '#version'
-          }
-          {
-            'include': '#paged'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -8991,22 +8166,6 @@
     'name': 'requestInlineDto'
     'patterns':[
       {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#modelSetting'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
         'begin': '\\('
         'patterns': [
           {
@@ -9098,22 +8257,6 @@
     'name': 'responseInlineDto'
     'patterns':[
       {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#modelSetting'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
         'begin': '\\('
         'patterns': [
           {
@@ -9169,55 +8312,6 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
-  'responseMapped':
-    'begin': '([ \\t]*response)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'responseMapped'
-    'patterns':[
-      {
-        'include': '#responseMappedProperty'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#responseMappedProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'responseMappedProperty':
-    'begin': '[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'support.type'
-      '2':
-        'name': 'support.type'
-    'name': 'responseMappedProperty'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
   'rest':
     'begin': '(?:([ \\t]*get)|([ \\t]*post)|([ \\t]*put)|([ \\t]*delete))(?:([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?'
     'beginCaptures':
@@ -9248,22 +8342,6 @@
       '2':
         'name': 'constant'
     'name': 'restSimple'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'saveValue':
-    'begin': '([ \\t]*save value)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'constant'
-    'name': 'saveValue'
     'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -9487,10 +8565,13 @@
             'include': '#comments'
           }
           {
-            'include': '#securitySignInQuery'
+            'include': '#endpointQuerySelect'
           }
           {
-            'include': '#securitySignInResponse'
+            'include': '#responseInlineDto'
+          }
+          {
+            'include': '#responseDto'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -9498,57 +8579,6 @@
           }
         ]
         'end': '\\]'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'securitySignInQuery':
-    'begin': '([ \\t]*query)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'support.type'
-      '3':
-        'name': 'support.type'
-    'name': 'securitySignInQuery'
-    'patterns':[
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'securitySignInResponse':
-    'begin': '([ \\t]*response)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-    'name': 'securitySignInResponse'
-    'patterns':[
-      {
-        'include': '#responseMappedProperty'
-      }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#responseMappedProperty'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -11358,22 +10388,6 @@
     'name': 'unidentifiedApiElement'
     'patterns':[
       {
-        'begin': '\\['
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#modelSetting'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\]'
-      }
-      {
         'begin': '\\('
         'patterns': [
           {
@@ -11637,10 +10651,7 @@
             'include': '#modelSetting'
           }
           {
-            'include': '#endpointQuerySelect'
-          }
-          {
-            'include': '#endpointQueryInlineSelect'
+            'include': '#stub'
           }
           {
             'include': '#requestInlineDto'
@@ -11649,16 +10660,16 @@
             'include': '#requestDto'
           }
           {
+            'include': '#endpointQueryInlineSelect'
+          }
+          {
+            'include': '#endpointQuerySelect'
+          }
+          {
             'include': '#responseInlineDto'
           }
           {
             'include': '#responseDto'
-          }
-          {
-            'include': '#responseMapped'
-          }
-          {
-            'include': '#stub'
           }
           {
             'include': '#secured'
@@ -11679,74 +10690,6 @@
         ]
         'end': '\\]'
       }
-      {
-        'begin': '\\('
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#crudPropertyInt'
-          }
-          {
-            'include': '#crudPropertyText'
-          }
-          {
-            'include': '#crudPropertyBoolean'
-          }
-          {
-            'include': '#crudPropertyDecimal'
-          }
-          {
-            'include': '#crudPropertyDateTime'
-          }
-          {
-            'include': '#crudPropertyDate'
-          }
-          {
-            'include': '#crudPropertyTime'
-          }
-          {
-            'include': '#crudPropertyUUID'
-          }
-          {
-            'include': '#crudPropertyBytes'
-          }
-          {
-            'include': '#crudPropertyInlineEnum'
-          }
-          {
-            'include': '#crudPropertyInlineDto'
-          }
-          {
-            'include': '#crudPropertyCopy'
-          }
-          {
-            'include': '#crudPropertyUnidentified'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\)'
-      }
-      {
-        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-        'name': 'invalid.illegal'
-      }
-    ]
-    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
-
-  'updateValue':
-    'begin': '([ \\t]*update value)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
-    'beginCaptures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'constant'
-    'name': 'updateValue'
-    'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -12044,4 +10987,3 @@
     ]
     'name': 'if'
     'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*\\()(?![ \\t]*and )(?![ \\t]*or )(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+is null)|([ \\t]+is not null)))|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
-       
