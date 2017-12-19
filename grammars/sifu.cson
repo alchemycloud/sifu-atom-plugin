@@ -9910,27 +9910,14 @@
             'include': '#input'
           }
           {
+            'include': '#goToPage'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
         'end': '\\]'
-      }
-      {
-        'begin': '\\{'
-        'patterns': [
-          {
-            'include': '#comments'
-          }
-          {
-            'include': '#onClick'
-          }
-          {
-            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
-            'name': 'invalid.illegal'
-          }
-        ]
-        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
