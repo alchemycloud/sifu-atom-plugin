@@ -4190,6 +4190,9 @@
             'include': '#sortable'
           }
           {
+            'include': '#viewCard'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -8248,6 +8251,20 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'richText':
+    'begin': '([ \\t]*rich)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'richText'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'scale':
     'begin': '([ \\t]*scale)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
     'beginCaptures':
@@ -9287,6 +9304,20 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'tooltip':
+    'begin': '([ \\t]*tooltip)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'tooltip'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'uiModelProperty':
     'begin': '([ \\t]*model)(?:\\.[ \\t]*([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*))*'
     'beginCaptures':
@@ -9370,6 +9401,9 @@
           }
           {
             'include': '#input'
+          }
+          {
+            'include': '#tooltip'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10009,6 +10043,9 @@
             'include': '#email'
           }
           {
+            'include': '#richText'
+          }
+          {
             'include': '#sensitive'
           }
           {
@@ -10597,6 +10634,20 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'viewCard':
+    'begin': '([ \\t]*card)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'viewCard'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'view':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+view)'
     'beginCaptures':
@@ -10623,6 +10674,9 @@
           }
           {
             'include': '#visible'
+          }
+          {
+            'include': '#viewCard'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
