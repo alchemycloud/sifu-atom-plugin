@@ -67,6 +67,9 @@
             'include': '#version'
           }
           {
+            'include': '#sqs'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -790,6 +793,9 @@
             'include': '#restSimple'
           }
           {
+            'include': '#sqs'
+          }
+          {
             'include': '#modelSetting'
           }
           {
@@ -859,6 +865,9 @@
           }
           {
             'include': '#restSimple'
+          }
+          {
+            'include': '#sqs'
           }
           {
             'include': '#modelSetting'
@@ -1213,6 +1222,9 @@
           }
           {
             'include': '#restSimple'
+          }
+          {
+            'include': '#sqs'
           }
           {
             'include': '#modelSetting'
@@ -7868,6 +7880,9 @@
             'include': '#restSimple'
           }
           {
+            'include': '#sqs'
+          }
+          {
             'include': '#modelSetting'
           }
           {
@@ -8999,6 +9014,22 @@
         ]
         'end': '\\)'
       }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'sqs':
+    'begin': '([ \\t]*sqs)(?:([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))?'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'constant'
+    'name': 'sqs'
+    'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
         'name': 'invalid.illegal'
@@ -10554,6 +10585,9 @@
           }
           {
             'include': '#restSimple'
+          }
+          {
+            'include': '#sqs'
           }
           {
             'include': '#modelSetting'
