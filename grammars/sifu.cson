@@ -648,6 +648,9 @@
             'include': '#visible'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -1345,6 +1348,9 @@
           }
           {
             'include': '#enumSetting'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -2751,6 +2757,9 @@
             'include': '#submitEndpointSetting'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -3188,6 +3197,9 @@
             'include': '#visible'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -3350,6 +3362,9 @@
           }
           {
             'include': '#enumSetting'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -3522,6 +3537,9 @@
             'include': '#submitEndpointSetting'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -3690,6 +3708,9 @@
           }
           {
             'include': '#sortable'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -3862,6 +3883,9 @@
             'include': '#visible'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -4030,6 +4054,9 @@
           }
           {
             'include': '#sortable'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -4203,6 +4230,9 @@
           }
           {
             'include': '#viewCard'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -4505,6 +4535,9 @@
           }
           {
             'include': '#sortable'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -4868,6 +4901,20 @@
       '2':
         'name': 'constant'
     'name': 'minTime'
+    'patterns':[
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
+  'mobileReady':
+    'begin': '([ \\t]*mobile)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+    'name': 'mobileReady'
     'patterns':[
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -5793,6 +5840,9 @@
             'include': '#visible'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -6009,6 +6059,22 @@
         'name': 'punctuation.definition.identity'
     'name': 'navigation'
     'patterns':[
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#mobileReady'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\]'
+      }
       {
         'begin': '\\('
         'patterns': [
@@ -6947,6 +7013,9 @@
           }
           {
             'include': '#secured'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -9104,6 +9173,9 @@
             'include': '#sortable'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -10223,6 +10295,9 @@
             'include': '#input'
           }
           {
+            'include': '#mobileReady'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
@@ -10423,6 +10498,9 @@
           }
           {
             'include': '#sortable'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -10711,6 +10789,9 @@
           }
           {
             'include': '#viewCard'
+          }
+          {
+            'include': '#mobileReady'
           }
           {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
