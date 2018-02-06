@@ -42,6 +42,172 @@
     'name': 'opt_as'
     'end': '([ \\t]+(?=[a-zA-Z]))|([ \\t]*(\\n|(?=(,|#|\\]|\\)|\\}))))'
 
+  'action':
+    'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+action)'
+    'beginCaptures':
+      '1':
+        'name': 'punctuation.definition.identity'
+      '2':
+        'name': 'keyword'
+    'name': 'action'
+    'patterns':[
+      {
+        'begin': '\\['
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#dtoSetting'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\]'
+      }
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#dtoPropertyInt'
+          }
+          {
+            'include': '#dtoPropertyText'
+          }
+          {
+            'include': '#dtoPropertyBoolean'
+          }
+          {
+            'include': '#dtoPropertyDecimal'
+          }
+          {
+            'include': '#dtoPropertyDateTime'
+          }
+          {
+            'include': '#dtoPropertyDate'
+          }
+          {
+            'include': '#dtoPropertyTime'
+          }
+          {
+            'include': '#dtoPropertyUUID'
+          }
+          {
+            'include': '#dtoPropertyBytes'
+          }
+          {
+            'include': '#dtoPropertyInlineEnum'
+          }
+          {
+            'include': '#dtoPropertyDtoInline'
+          }
+          {
+            'include': '#dtoPropertyUnidentified'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'include': '#confirm'
+      }
+      {
+        'include': '#goToPage'
+      }
+      {
+        'include': '#fireEvent'
+      }
+      {
+        'include': '#close'
+      }
+      {
+        'include': '#reload'
+      }
+      {
+        'include': '#replace'
+      }
+      {
+        'include': '#open'
+      }
+      {
+        'include': '#show'
+      }
+      {
+        'include': '#hide'
+      }
+      {
+        'include': '#callEndpoint'
+      }
+      {
+        'include': '#assign'
+      }
+      {
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#confirm'
+          }
+          {
+            'include': '#goToPage'
+          }
+          {
+            'include': '#fireEvent'
+          }
+          {
+            'include': '#close'
+          }
+          {
+            'include': '#reload'
+          }
+          {
+            'include': '#replace'
+          }
+          {
+            'include': '#open'
+          }
+          {
+            'include': '#show'
+          }
+          {
+            'include': '#hide'
+          }
+          {
+            'include': '#callEndpoint'
+          }
+          {
+            'include': '#assign'
+          }
+          {
+            'include': '#doAction'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'api':
     'begin': '([ \\t]*[a-zA-Z][_a-zA-Z0-9]*)([ \\t]+api)'
     'beginCaptures':
@@ -240,6 +406,9 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#if'
           }
           {
             'include': '#onSuccess'
@@ -505,10 +674,16 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#if'
           }
           {
             'include': '#confirm'
@@ -544,11 +719,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -750,6 +928,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -1306,6 +1490,152 @@
     ]
     'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
 
+  'doAction':
+    'begin': '([ \\t]*do)[ \\t]+([a-zA-Z][_a-zA-Z0-9]*(\\.[a-zA-Z][_a-zA-Z0-9]*)*)'
+    'beginCaptures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'support.type'
+      '3':
+        'name': 'support.type'
+    'name': 'doAction'
+    'patterns':[
+      {
+        'begin': '\\('
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#eventProperty'
+          }
+          {
+            'include': '#successProperty'
+          }
+          {
+            'include': '#empty'
+          }
+          {
+            'include': '#ignore'
+          }
+          {
+            'include': '#constant'
+          }
+          {
+            'include': '#paramsProperty'
+          }
+          {
+            'include': '#uiModelProperty'
+          }
+          {
+            'include': '#itemProperty'
+          }
+          {
+            'include': '#principalProperty'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\)'
+      }
+      {
+        'include': '#confirm'
+      }
+      {
+        'include': '#goToPage'
+      }
+      {
+        'include': '#fireEvent'
+      }
+      {
+        'include': '#close'
+      }
+      {
+        'include': '#reload'
+      }
+      {
+        'include': '#replace'
+      }
+      {
+        'include': '#open'
+      }
+      {
+        'include': '#show'
+      }
+      {
+        'include': '#hide'
+      }
+      {
+        'include': '#callEndpoint'
+      }
+      {
+        'include': '#assign'
+      }
+      {
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
+        'patterns': [
+          {
+            'include': '#comments'
+          }
+          {
+            'include': '#if'
+          }
+          {
+            'include': '#confirm'
+          }
+          {
+            'include': '#goToPage'
+          }
+          {
+            'include': '#fireEvent'
+          }
+          {
+            'include': '#close'
+          }
+          {
+            'include': '#reload'
+          }
+          {
+            'include': '#replace'
+          }
+          {
+            'include': '#open'
+          }
+          {
+            'include': '#show'
+          }
+          {
+            'include': '#hide'
+          }
+          {
+            'include': '#callEndpoint'
+          }
+          {
+            'include': '#assign'
+          }
+          {
+            'include': '#doAction'
+          }
+          {
+            'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+            'name': 'invalid.illegal'
+          }
+        ]
+        'end': '\\}'
+      }
+      {
+        'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
+        'name': 'invalid.illegal'
+      }
+    ]
+    'end': '(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n))'
+
   'dropConstant':
     'begin': '([ \\t]*drop)([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)'
     'beginCaptures':
@@ -1455,6 +1785,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -2864,6 +3200,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -3304,6 +3646,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onInit'
           }
           {
@@ -3469,6 +3817,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -3644,6 +3998,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -3815,6 +4175,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -3990,6 +4356,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -4161,6 +4533,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -4337,6 +4715,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -4642,6 +5026,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -5947,6 +6337,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -6127,9 +6523,6 @@
     'name': 'onClick'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6163,7 +6556,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6205,11 +6601,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6228,9 +6627,6 @@
     'name': 'onClose'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6264,7 +6660,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6306,11 +6705,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6367,7 +6769,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6409,11 +6814,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6432,9 +6840,6 @@
     'name': 'onInit'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6468,7 +6873,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6510,11 +6918,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6533,9 +6944,6 @@
     'name': 'onLoad'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6569,7 +6977,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6611,11 +7022,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6634,9 +7048,6 @@
     'name': 'onSelect'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6670,7 +7081,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6712,11 +7126,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -6735,9 +7152,6 @@
     'name': 'onSuccess'
     'patterns':[
       {
-        'include': '#if'
-      }
-      {
         'include': '#confirm'
       }
       {
@@ -6771,7 +7185,10 @@
         'include': '#assign'
       }
       {
-        'begin': '\\('
+        'include': '#doAction'
+      }
+      {
+        'begin': '\\{'
         'patterns': [
           {
             'include': '#comments'
@@ -6813,11 +7230,14 @@
             'include': '#assign'
           }
           {
+            'include': '#doAction'
+          }
+          {
             'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
             'name': 'invalid.illegal'
           }
         ]
-        'end': '\\)'
+        'end': '\\}'
       }
       {
         'match': '[^(\\s\\{\\}\\[\\]\\(\\)#,)]+'
@@ -7123,6 +7543,12 @@
         'patterns': [
           {
             'include': '#comments'
+          }
+          {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
           }
           {
             'include': '#onLoad'
@@ -9280,6 +9706,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -10610,6 +11042,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -10901,6 +11339,12 @@
             'include': '#comments'
           }
           {
+            'include': '#action'
+          }
+          {
+            'include': '#event'
+          }
+          {
             'include': '#onLoad'
           }
           {
@@ -11030,3 +11474,4 @@
     ]
     'name': 'if'
     'end': '(\\G(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))|((?![ \\t]*\\()(?![ \\t]*and )(?![ \\t]*or )(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+==)|([ \\t]+!=)|([ \\t]+>=)|([ \\t]+>)|([ \\t]+<=)|([ \\t]+<)|([ \\t]+like)|([ \\t]+in))([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+))(?!(?:([ \\t]*optional))?(?:([ \\t]+mandatory))?([ \\t]+[^(\\s\\{\\}\\[\\]\\(\\)#,)]+)(?:([ \\t]+is null)|([ \\t]+is not null)))|(?=[ \\t]*(,|#|\\]|\\)|\\}|\\n)))'
+       
