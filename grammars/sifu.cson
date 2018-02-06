@@ -641,6 +641,9 @@
     'name': 'confirm'
     'patterns':[
       {
+        'include': '#if'
+      }
+      {
         'include': '#confirm'
       }
       {
@@ -1540,6 +1543,9 @@
           }
         ]
         'end': '\\)'
+      }
+      {
+        'include': '#if'
       }
       {
         'include': '#confirm'
@@ -6523,6 +6529,9 @@
     'name': 'onClick'
     'patterns':[
       {
+        'include': '#if'
+      }
+      {
         'include': '#confirm'
       }
       {
@@ -6626,6 +6635,9 @@
         'name': 'keyword'
     'name': 'onClose'
     'patterns':[
+      {
+        'include': '#if'
+      }
       {
         'include': '#confirm'
       }
@@ -6840,6 +6852,9 @@
     'name': 'onInit'
     'patterns':[
       {
+        'include': '#if'
+      }
+      {
         'include': '#confirm'
       }
       {
@@ -6943,6 +6958,9 @@
         'name': 'keyword'
     'name': 'onLoad'
     'patterns':[
+      {
+        'include': '#if'
+      }
       {
         'include': '#confirm'
       }
@@ -7048,6 +7066,9 @@
     'name': 'onSelect'
     'patterns':[
       {
+        'include': '#if'
+      }
+      {
         'include': '#confirm'
       }
       {
@@ -7151,6 +7172,9 @@
         'name': 'keyword'
     'name': 'onSuccess'
     'patterns':[
+      {
+        'include': '#if'
+      }
       {
         'include': '#confirm'
       }
